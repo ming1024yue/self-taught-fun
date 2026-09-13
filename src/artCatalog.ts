@@ -224,3 +224,107 @@ export const design:SubjectConfig={
   ["Stanford","d.school Resources","https://dschool.stanford.edu/resources","设计思维、研究、原型和教学方法的开放资源。"]
  ]
 };
+
+const musicTopics:Record<string,Topic>={
+ tools:t("学习工具","先用歌唱、拍击、键盘或自己的主乐器建立听觉与动作联系，再用记谱、录音和分析工具保存练习、比较版本并完成作品。",[]),
+ curriculum:tc("本科课程地图","参考 Yale 2026–27 音乐本科的四组结构：音乐理论与技术、创作与演奏、西方音乐史、流行与世界音乐；再以论文、作品或独奏会完成毕业项目。",[
+  r("Yale College Music Major","https://catalog.yale.edu/ycps/subjects-of-instruction/music/","入门","公开讲义","无需前置","当前本科培养方案同时要求理论与技术、创作与演奏、西方音乐史、流行或非西方传统，并设置毕业项目。"),
+  r("MIT Music Major","https://mta.mit.edu/music-major","进阶","公开讲义","基础识谱与一种音乐实践","官方本科结构包含和声与对位、音乐史与文化、表演、高级研讨和跨方向选修。"),
+  r("MIT Music Technology","https://mta.mit.edu/music/music-technology","高级","公开讲义","乐理、编程与声音基础","当前课程从录音、混音和声音设计延伸到交互音乐系统、音乐处理和人机协作音乐。")
+ ],{
+  basis:"按每周 6–10 小时学习，完整核心约需 24–35 个月。乐理和历史可以自学，但演唱或演奏需要长期、规律且有反馈的练习；学习时间应包含听辨、视唱、分析和创作，而不只是观看课程。",
+  reference:["Yale College Music Major","https://catalog.yale.edu/ycps/subjects-of-instruction/music/"],
+  stages:[
+   {title:"音乐语言与听觉",courses:"识谱、节奏、音程、调式、和弦、视唱练耳与键盘基础",practice:"每天完成短时听辨、视唱和节奏练习，并记录准确率。"},
+   {title:"和声、对位与曲式",courses:"功能和声、声部进行、基础对位、曲式、配器与分析",practice:"分析不同风格的作品，并完成和声、旋律与短曲写作。"},
+   {title:"历史、文化与研究",courses:"西方音乐史、世界音乐、流行音乐、声音研究与音乐写作",practice:"完成聆听日志、乐曲分析和一篇有音频证据的研究短文。"},
+   {title:"专业方向深化",courses:"演奏与合奏、作曲与编曲、录音与音乐科技中任选一个主方向",practice:"持续排练或制作，完成至少两次公开反馈和版本迭代。"},
+   {title:"高级专题与毕业项目",courses:"当代音乐、计算音乐、交互系统、音乐产业、研究方法与作品呈现",practice:"完成独奏会、作品集、录音项目、软件乐器或研究论文。"}
+  ]
+ }),
+ foundations:t("识谱、节奏与听觉基础","从声音、音高、节奏、音程、调式和和弦建立共同语言，把符号、听觉、声音和动作连接起来。",[
+  r("中央音乐学院：音乐奥秘解码——轻松学乐理","https://higher.smartedu.cn/course/62354d799906eace0490ad07","入门","公开课","无需前置","面向零基础，以音高、节奏、谱表、表情术语和音响结构建立识谱与音乐理解能力。"),
+  r("Open Yale: Listening to Music","https://oyc.yale.edu/music/musi-112","入门","公开课","无需前置","从节奏、旋律、和声、织体、曲式和乐器训练主动聆听，提供完整视频、音频和文字稿。"),
+  r("Ableton Learning Music","https://learningmusic.ableton.com/","入门","项目平台","无需前置","在浏览器中直接体验节拍、音符、音阶、和弦、低音线与歌曲结构。")
+ ]),
+ theory:t("和声、对位与曲式分析","学习音乐在时间中的组织方式，并通过写作、演唱、键盘和分析理解和声进行、声部关系与形式。",[
+  r("Music Theory for the 21st-Century Classroom","https://musictheory.pugetsound.edu/mt21c/MusicTheory.html","入门","开放教材","基础识谱","免费教材包含音阶、节奏、和弦、功能、曲式、对位、爵士与后调性理论及练习。"),
+  r("MIT: Harmony and Counterpoint I","https://ocw.mit.edu/courses/21m-301-harmony-and-counterpoint-i-spring-2005/","进阶","公开课","识谱、音程、三和弦与基础键盘","结合写作、聆听、分析、视唱和键盘学习调性和声与二声部对位，并提供习题和考试。"),
+  r("Open Music Theory","https://viva.pressbooks.pub/openmusictheory/","高级","开放教材","基础和声与分析","开放教材覆盖调性、后调性、流行与爵士理论，并包含分析和听觉练习。")
+ ]),
+ "history-listening":t("音乐史、聆听与批评","通过乐谱、录音、演出和文献研究风格如何形成，并练习用具体声音证据而非抽象形容词讨论音乐。",[
+  r("Open Yale: Listening to Music","https://oyc.yale.edu/music/musi-112","入门","公开课","无需前置","以西方古典音乐为主线训练风格辨认、曲式理解和精确聆听。"),
+  r("MIT: Stravinsky to the Present","https://ocw.mit.edu/courses/21m-260-stravinsky-to-the-present-spring-2016/","进阶","公开课","和声基础与乐谱阅读","学习二十世纪以来的音乐语言，并通过听辨、乐谱分析与写作连接审美、历史和政治。"),
+  r("IMSLP Petrucci Music Library","https://imslp.org/","进阶","项目平台","基础识谱","查找公共领域乐谱和录音，用于版本比较、分析和演奏研究。")
+ ]),
+ "world-popular":t("世界、流行与社会中的音乐","把音乐理解为具体社群的实践，研究声音、仪式、身份、媒介、产业和权力之间的关系。",[
+  r("MIT: Introduction to World Music","https://ocw.mit.edu/courses/21m-030-introduction-to-world-music-spring-2013/","入门","公开课","无需前置","从多种文化的聆听方式进入民族音乐学，讨论音乐如何被文化塑造并反过来塑造日常生活。"),
+  r("Smithsonian Folkways Learning Pathways","https://folkways.si.edu/learn","入门","开放教材","无需前置","通过馆藏、课程材料和主题导览接触世界各地的音乐传统与文化语境。"),
+  r("MIT: Music and Technology","https://ocw.mit.edu/courses/21m-380-music-and-technology-recording-techniques-and-audio-production-fall-2016/","高级","公开课","音乐史与声音基础","从录音媒介和听觉感知理解现代音乐生产与传播方式。")
+ ]),
+ performance:t("演唱、演奏与合奏","选择一种主要实践，建立姿势、呼吸、音色、节奏、视奏、记忆和舞台沟通能力，并在合奏中训练聆听与协作。",[
+  r("MIT Music Performance","https://mta.mit.edu/music/performance","入门","公开讲义","选择人声或一种乐器","参考大学表演训练中的独奏课、室内乐、乐团和跨文化合奏结构，制定个人练习与演出计划。"),
+  r("Berklee: Developing Your Musicianship","https://www.coursera.org/learn/develop-your-musicianship","入门","公开课","基础识谱","用听觉、音阶、和弦、调性和歌曲练习发展实用音乐能力；完整访问以平台当期政策为准。"),
+  r("IMSLP Petrucci Music Library","https://imslp.org/","进阶","项目平台","基础识谱与演奏能力","使用公共领域总谱和分谱安排视奏、版本比较、排练与录音项目。")
+ ]),
+ composition:t("作曲、编曲与歌曲写作","从动机、旋律、和声、节奏、织体和曲式发展材料，学习为不同乐器、人声和媒介写作，并通过演奏与录音检验作品。",[
+  r("MIT: Harmony and Counterpoint I","https://ocw.mit.edu/courses/21m-301-harmony-and-counterpoint-i-spring-2005/","入门","公开课","识谱与基础和弦","以短写作、听辨和分析训练调性材料、声部进行和结构感。"),
+  r("MIT: Composing with Computers I","https://ocw.mit.edu/courses/21m-361-composing-with-computers-i-electronic-music-composition-spring-2008/","进阶","公开课","基础乐理与音频编辑","通过采样、反馈、噪声、数字信号处理和每周作曲任务探索电子音乐。"),
+  r("Berklee: Songwriting — Writing the Lyrics","https://www.coursera.org/learn/songwriting-lyrics","进阶","公开课","基础英文与歌曲聆听","从韵律、重音、押韵、视角和结构训练歌词写作；完整访问以平台当期政策为准。")
+ ]),
+ "music-tech":t("录音、制作与声音设计","理解声学、听觉、麦克风、信号链、数字音频、编辑、混音和母带，使制作选择能够服务于音乐结构和表达。",[
+  r("MIT: Recording Techniques and Audio Production","https://ocw.mit.edu/courses/21m-380-music-and-technology-recording-techniques-and-audio-production-fall-2016/","入门","公开课","无需前置","从声学和听觉进入麦克风、扬声器、信号处理、DAW、编辑、混音与母带。"),
+  r("MIT: Composing with Computers I","https://ocw.mit.edu/courses/21m-361-composing-with-computers-i-electronic-music-composition-spring-2008/","进阶","公开课","基础音频制作","通过采样、合成、DSP、算法和混音完成连续电子音乐作品。"),
+  r("Ableton Learning Synths","https://learningsynths.ableton.com/","进阶","项目平台","基础乐理与声音编辑","在浏览器中学习振荡器、滤波器、包络和调制，理解合成音色的构成。")
+ ]),
+ "computational-music":t("计算音乐、交互与 AI","用编程分析节奏、和声、音色和曲式，设计交互乐器或人机共同创作系统，并审查训练数据、归属和审美同质化问题。",[
+  r("Fundamentals of Music Processing","https://www.audiolabs-erlangen.de/resources/MIR/FMP/C0/C0.html","入门","开放教材","Python、线性代数与基础乐理","开放教材和 Jupyter 笔记覆盖音频表示、节拍、和声、对齐、结构与检索。"),
+  r("MIT Music Technology","https://mta.mit.edu/music/music-technology","进阶","公开讲义","乐理与基础编程","参考当前项目制课程进入交互音乐系统、数字乐器、音乐处理和人机协作音乐。"),
+  r("music21 Documentation","https://www.music21.org/music21docs/","高级","项目平台","Python 与音乐理论","用开源工具读取、生成和分析符号化乐谱，完成计算音乐学或算法作曲项目。")
+ ]),
+ projects:t("作品、演出与研究项目","用可以被听见和复查的成果结束每个阶段：演出、作品、录音、分析、软件乐器或论文都应包含过程记录、反馈和修订。",[
+  r("Freesound","https://freesound.org/","入门","项目平台","版权与音频编辑常识","使用带明确许可的声音素材完成采样作品，并正确记录作者与许可证。"),
+  r("MusicBrainz API","https://musicbrainz.org/doc/MusicBrainz_API","进阶","项目平台","基础编程与数据处理","使用开放音乐元数据完成作品目录、流派网络或音乐史数据项目。"),
+  r("Open Science Framework","https://osf.io/","高级","项目平台","研究方法","保存研究问题、听觉实验、数据、分析代码和论文版本，形成可复查项目。")
+ ]),
+ books:t("书单与资源","集中查看开放乐理教材、大学公开课程、乐谱档案与音乐科技资料。",[])
+};
+
+export const music:SubjectConfig={
+ slug:"music",name:"音乐",en:"MUSIC",
+ intro:"音乐学习同时依赖耳朵、身体、符号、历史和创造。这条路径从识谱、节奏与听觉开始，经过和声、曲式、音乐史和世界音乐，再选择演奏、作曲或音乐科技方向，最终形成可以公开演出、发布或研究的成果。",
+ caution:"长时间演唱、演奏或使用耳机可能造成嗓音、肌肉骨骼和听力损伤。逐步增加练习量，控制监听音量并安排休息；持续疼痛、耳鸣或声音异常应停止练习并寻求专业评估。采样、翻奏和发布录音时须遵守作品与录音版权。",
+ groups:[start,["起点与课程地图",[["tools","学习工具"],["curriculum","本科课程地图"],["foundations","识谱、节奏与听觉基础"]]],["理论与文化",[["theory","和声、对位与曲式分析"],["history-listening","音乐史、聆听与批评"],["world-popular","世界、流行与社会中的音乐"]]],["创作与表演",[["performance","演唱、演奏与合奏"],["composition","作曲、编曲与歌曲写作"],["music-tech","录音、制作与声音设计"]]],["前沿与实践",[["computational-music","计算音乐、交互与 AI"],["projects","作品、演出与研究项目"],["books","书单与资源"]]]],
+ topics:musicTopics,
+ phases:[
+  {time:"3–4 个月",title:"建立音乐语言与听觉",goal:"能够把听到的节奏、旋律和基础和声与符号对应起来。",learn:"识谱、节拍、节奏、音程、音阶、三和弦、视唱练耳和键盘定位。",done:"连续完成 8 周听辨与视唱记录，并转写两段短旋律。",link:"foundations"},
+  {time:"5–7 个月",title:"掌握和声、对位与曲式",goal:"能够分析音乐结构，并用同样原理完成短写作。",learn:"功能和声、声部进行、对位、终止式、动机、乐句、二三段式、奏鸣与流行曲式。",done:"完成四首不同结构的短曲或编配，并为三首作品写出分析。",link:"theory"},
+  {time:"同步进行 4–6 个月",title:"贯穿历史、文化与批评",goal:"能够从声音证据、历史语境和社会实践三个层面讨论音乐。",learn:"西方音乐史、世界音乐、流行音乐、媒介、身份、产业与批评写作。",done:"完成 20 条聆听日志和一篇包含乐谱或音频时间点证据的文章。",link:"history-listening",mode:"parallel"},
+  {time:"按方向 8–12 个月",title:"选择一个主要实践方向",goal:"在演奏、作曲或音乐制作中形成稳定的实践能力。",learn:"按方向安排每日练习、曲目或作品序列、反馈、排练、录音和版本迭代。",done:"完成一场 20–30 分钟演出，或发布 4–6 首作品与完整制作档案。",link:"performance",mode:"choice"},
+  {time:"4–6 个月",title:"进入当代与音乐科技",goal:"理解声音技术如何改变创作、表演、分析和传播。",learn:"声学、录音、合成、交互系统、计算音乐、人机协作、版权与平台机制。",done:"完成一个录音、交互乐器、计算分析或人机共同创作项目。",link:"music-tech"},
+  {time:"从第一阶段持续",title:"持续聆听、练习与公开呈现",goal:"形成能够自我诊断、接受反馈并不断修订的长期音乐实践。",learn:"练习设计、同伴合作、演出或发布、过程档案、作品说明和复盘。",done:"建立包含乐谱、录音、演出、分析与过程记录的毕业作品集。",link:"projects",mode:"ongoing"}
+ ],
+ tools:[
+  ["记谱与编曲",[["MuseScore","https://musescore.org/","开源五线谱、总谱和分谱制作"],["LilyPond","https://lilypond.org/","用文本生成高质量乐谱"],["Flat","https://flat.io/","浏览器记谱、播放和协作"]]],
+  ["听觉与练习",[["musictheory.net","https://www.musictheory.net/","基础乐理与听辨练习"],["Teoria","https://www.teoria.com/","音程、和弦、调式和节奏训练"],["IMSLP","https://imslp.org/","查找公共领域乐谱与录音"]]],
+  ["录音与创作",[["Audacity","https://www.audacityteam.org/","开源录音、剪辑与基础处理"],["Ardour","https://ardour.org/","开源多轨录音与混音工作站"],["Sonic Pi","https://sonic-pi.net/","通过代码进行现场编程与音乐创作"]]],
+  ["分析与计算",[["Sonic Visualiser","https://www.sonicvisualiser.org/","查看波形、频谱、节拍和音高标注"],["music21","https://www.music21.org/","符号音乐分析与算法作曲"],["librosa","https://librosa.org/","Python 音频与音乐信息检索"]]],
+  ["开放素材与数据",[["Freesound","https://freesound.org/","检索带许可信息的声音素材"],["MusicBrainz","https://musicbrainz.org/","开放音乐元数据与 API"],["Musopen","https://musopen.org/","公共领域乐谱与古典音乐录音"]]]
+ ],
+ books:[
+  ["Music Theory for the 21st-Century Classroom","https://musictheory.pugetsound.edu/mt21c/MusicTheory.html","乐理 · 入门","免费教材与练习，覆盖调性、流行、爵士、对位和后调性理论。"],
+  ["Open Music Theory","https://viva.pressbooks.pub/openmusictheory/","乐理与分析 · 进阶","开放教材，适合从基础识谱逐步进入多种音乐理论体系。"],
+  ["Open Yale: Listening to Music","https://oyc.yale.edu/music/musi-112","聆听与历史 · 入门","完整视频、音频与文字稿构成的主动聆听课程。"],
+  ["MIT Harmony and Counterpoint I","https://ocw.mit.edu/courses/21m-301-harmony-and-counterpoint-i-spring-2005/","和声与对位 · 进阶","公开习题、考试和项目把写作、听辨、分析与视唱连接起来。"],
+  ["Fundamentals of Music Processing","https://www.audiolabs-erlangen.de/resources/MIR/FMP/C0/C0.html","计算音乐 · 高级","免费在线教材和代码笔记，系统学习数字音乐信号处理与检索。"],
+  ["IMSLP Petrucci Music Library","https://imslp.org/","乐谱档案 · 持续使用","公共领域乐谱、分谱与录音的重要开放入口。"]
+ ],
+ portals:[
+  ["央音","音乐奥秘解码——轻松学乐理","https://higher.smartedu.cn/course/62354d799906eace0490ad07","中央音乐学院面向零基础学习者的中文乐理课程。"],
+  ["Yale","Listening to Music","https://oyc.yale.edu/music/musi-112","从零开始训练节奏、旋律、和声、曲式与风格聆听。"],
+  ["Yale","Music Major 2026–27","https://catalog.yale.edu/ycps/subjects-of-instruction/music/","理论技术、创作表演、音乐史与多元传统组成的当前本科结构。"],
+  ["MIT","Music OpenCourseWare","https://ocw.mit.edu/search/?d=Music%20and%20Theater%20Arts","和声、音乐史、世界音乐、作曲、录音和音乐科技开放课程。"],
+  ["MIT","Music Technology","https://mta.mit.edu/music/music-technology","从录音制作到交互系统、音乐处理与人机协作的当前课程入口。"],
+  ["Berklee","Music Courses on Coursera","https://www.coursera.org/partners/berklee","乐理、演奏、作曲、制作与音乐产业课程；访问方式以平台政策为准。"]
+ ]
+};
