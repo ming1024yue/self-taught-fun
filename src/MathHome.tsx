@@ -1,5 +1,7 @@
 /* eslint-disable no-irregular-whitespace -- full-width spacing is intentional in Chinese prose */
-import {mathGroups} from "./mathData";
+import {mathGroups,mathTopics} from "./mathData";
+import UniversalLearnerOnboarding from "./UniversalLearnerOnboarding";
+import {buildCapabilityGraphFromPhases} from "./capabilityCore";
 import GlobalHeader from "./GlobalHeader";
 import LearningTimeline from "./LearningTimeline";
 import type {Phase} from "./subjectTypes";
@@ -13,9 +15,17 @@ const phases:(Phase&{n:string})[]=[
  {n:"06",time:"按方向 4–7 个月",title:"或选择现代应用数学方向",goal:"从理论方向与应用方向中选择更符合目标的一条，也可以日后再补另一条。",learn:"根据方向选择随机过程、信息论、偏微分方程、动力系统或网络科学，并用代码进行数值实验。",done:"能从现实问题定义状态、变量和假设，完成一次分析与计算相互验证的小型研究。",link:"stochastic-processes",mode:"choice"},
  {n:"07",time:"从核心阶段持续",title:"进入计算与交叉前沿",goal:"把数学变成可检验的证明、模型、程序或研究报告。",learn:"选择优化、数值计算、机器学习数学、密码学、网络科学、金融数学或物理建模；记录假设、推导、实现、验证和局限。",done:"完成一个别人能够复现、检查和提出反例的数学作品，并根据反馈迭代。",link:"projects",mode:"ongoing"}
 ];
-
+const mathCapabilityGraph=buildCapabilityGraphFromPhases({
+  subjectKey:"math",
+  subjectName:"数学",
+  phases,
+  getResources:(link)=>mathTopics[link]?.resources??[],
+});
 export default function MathHome(){return <div className="shell"><MathHeader/><MathSide/><main><section id="intro" className="hero"><small>SELF-TAUGHT MATHEMATICS</small><h1>自学数学</h1><p>数学不是公式清单，而是一套描述结构、变化、信息与不确定性的语言。这里从零基础出发，经过大学核心与严格理论，再连接计算、人工智能和复杂系统等现代方向。</p><aside>不要用“看懂了”代替“会做了”，也不要为了追逐热门领域跳过基础。真正的理解需要你关掉答案，独立计算、证明、建模并解释每一步。</aside></section><section id="how"><h2>如何使用本站</h2><p>左侧目录按照知识依赖组织。先完成基础诊断，再为每个阶段选择一门主课；阅读定义和例题后必须做题，并定期用证明、代码或模型检验理解。</p><div className="legend" aria-label="资源类型图例"><div><i className="resource-mark course"/><span><b>公开课</b><small>绿色书签</small></span></div><div><i className="resource-mark paper"/><span><b>讲义与项目</b><small>红色书签</small></span></div><div><i className="resource-mark book"/><span><b>书籍与教材</b><small>蓝色书签</small></span></div></div></section><section id="plan"><h2>学习规划</h2>
-<p className="plan-intro">目标是完成相当于本科数学专业教育的系统训练：掌握完整的核心知识与证明能力，能够继续学习前沿领域，并通过建模、计算或研究应用所学。以下时间按每周 6–10 小时估算。</p>
+<p className="plan-intro">目标是完成相当于本科数学专业教育的系统训练：掌握完整的核心知识与证明能力，能够继续学习前沿领域，并通过建模、计算或研究应用所学。以下时间按每周 6–10 小时估算。</p><UniversalLearnerOnboarding
+  subjectName="数学"
+  graph={mathCapabilityGraph}
+/>
 <div className="beginner-note"><strong>开始前先建立四个习惯</strong><ul><li>每一章至少完成一组不看答案的习题，错误题比收藏新资源更重要。</li><li>遇到定义时自己写例子与反例，遇到定理时先问条件为什么不能删除。</li><li>计算卡住就拆成更小步骤；证明卡住就从结论倒推需要什么条件。</li><li>保留一份错题与问题日志，每周复盘，而不是追求一次性全部理解。</li></ul></div><LearningTimeline phases={phases}/><div className="plan-steps">{phases.map(p=><article key={p.n}><div className="phase-meta"><span>{p.n}</span><small>建议用时<br/><b>{p.time}</b></small></div><div><h3>{p.title}</h3><p className="phase-goal">{p.goal}</p><dl><div><dt>主要学习内容</dt><dd>{p.learn}</dd></div><div><dt>完成标志</dt><dd>{p.done}</dd></div></dl><a href={u(`math/topics/${p.link}/`)}>进入相关章节 →</a></div></article>)}</div><div className="weekly"><h3>适合初学者的一周节奏</h3><p><b>2 小时课程</b>：理解新定义与例题　·　<b>3–4 小时练习</b>：独立计算和证明　·　<b>1 小时复盘</b>：整理错误与反例　·　<b>1–2 小时实验</b>：用图像、代码或现实问题验证概念。</p></div></section></main></div>}
 
 export function MathHeader(){return <GlobalHeader sidebarLabel="数学"/>}
