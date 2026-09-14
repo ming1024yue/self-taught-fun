@@ -1,4 +1,5 @@
 import {useEffect,useState} from "react";
+import {pick,useLanguage} from "./i18n";
 
 type SiteTheme="light"|"dark";
 const storageKey="selftaught-theme";
@@ -24,6 +25,7 @@ function applyTheme(theme:SiteTheme,persist=true){
 }
 
 export default function ThemeToggle(){
+ const {language}=useLanguage();
  const [theme,setTheme]=useState<SiteTheme>(currentTheme);
  useEffect(()=>{
   const media=matchMedia("(prefers-color-scheme: dark)");
@@ -34,5 +36,6 @@ export default function ThemeToggle(){
   return()=>{media.removeEventListener("change",followSystem);window.removeEventListener("site-theme-change",sync)};
  },[]);
  const dark=theme==="dark",next=dark?"light":"dark";
- return <button className="theme-toggle" type="button" aria-label={`切换为${dark?"浅色":"深色"}主题`} aria-pressed={dark} title={`切换为${dark?"浅色":"深色"}主题`} onClick={()=>applyTheme(next)}><span className="theme-toggle-icon" aria-hidden="true"/></button>;
+ const label=pick(language,`切换为${dark?"浅色":"深色"}主题`,`Switch to ${dark?"light":"dark"} theme`);
+ return <button className="theme-toggle" type="button" aria-label={label} aria-pressed={dark} title={label} onClick={()=>applyTheme(next)}><span className="theme-toggle-icon" aria-hidden="true"/></button>;
 }

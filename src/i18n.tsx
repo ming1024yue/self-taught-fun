@@ -1,0 +1,65 @@
+import {createContext,useCallback,useContext,useEffect,useMemo,useState,type ReactNode} from "react";
+
+export type SiteLanguage="zh"|"en";
+const storageKey="selftaught-language";
+const LanguageContext=createContext<{language:SiteLanguage;setLanguage:(language:SiteLanguage)=>void}>({language:"zh",setLanguage:()=>undefined});
+
+function initialLanguage():SiteLanguage{return document.documentElement.dataset.language==="en"?"en":"zh"}
+function applyLanguage(language:SiteLanguage){
+ document.documentElement.dataset.language=language;
+ document.documentElement.lang=language==="en"?"en":"zh-CN";
+ document.title=language==="en"?"Self-Taught Fun | Open Learning Paths":"自学坊｜selftaught.fun";
+ document.querySelector<HTMLMetaElement>('meta[name="description"]')?.setAttribute("content",language==="en"?"Self-Taught Fun curates clear, reliable, and practical open learning paths across disciplines.":"自学坊：为不同学科整理清晰、可靠、可实践的开放自学路径");
+ try{localStorage.setItem(storageKey,language)}catch{return}
+}
+
+export function LanguageProvider({children}:{children:ReactNode}){
+ const [language,setLanguageState]=useState<SiteLanguage>(initialLanguage);
+ const setLanguage=useCallback((next:SiteLanguage)=>{applyLanguage(next);setLanguageState(next)},[]);
+ useEffect(()=>applyLanguage(language),[language]);
+ const value=useMemo(()=>({language,setLanguage}),[language,setLanguage]);
+ return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
+}
+
+export function useLanguage(){return useContext(LanguageContext)}
+export const pick=(language:SiteLanguage,zh:string,en:string)=>language==="en"?en:zh;
+
+const subjectNames:Record<string,string>={
+ math:"Mathematics",mathematics:"Mathematics","computer-science":"Computer Science",physics:"Physics",chemistry:"Chemistry",biology:"Biology",finance:"Finance",psychology:"Psychology","political-science":"Political Science",management:"Management",history:"History","engineering-electrical":"Electrical Engineering","engineering-mechanical":"Mechanical Engineering","engineering-computer":"Computer Engineering","engineering-aerospace":"Aerospace Engineering","engineering-systems":"Control & Systems Engineering","engineering-materials":"Materials Engineering","exercise-physiology":"Exercise Physiology",nutrition:"Nutrition","fine-arts":"Fine Arts",design:"Design",music:"Music","language-linguistics":"Linguistics","language-chinese":"Chinese Language","language-english":"English Language","literature-writing":"Writing","literature-theory":"Literary Theory","literature-world":"Chinese & World Literature",
+ "数学":"Mathematics","计算机":"Computer Science","计算机科学":"Computer Science","经济学":"Economics","金融":"Finance","物理":"Physics","化学":"Chemistry","生物":"Biology","心理学":"Psychology","政治学":"Political Science","管理学":"Management","社会科学":"Social Sciences","历史":"History","工程学":"Engineering","运动科学":"Exercise Science","营养学":"Nutrition","艺术":"Arts","设计":"Design","音乐":"Music","语言":"Languages","文学":"Literature","交叉领域":"Interdisciplinary","电子与电气工程":"Electrical Engineering","机械工程":"Mechanical Engineering","计算机工程":"Computer Engineering","航空航天工程":"Aerospace Engineering","控制与系统工程":"Control & Systems Engineering","材料工程":"Materials Engineering","运动生理学":"Exercise Physiology","美术":"Fine Arts","语言学":"Linguistics","汉语":"Chinese Language","英语":"English Language","写作":"Writing","文学理论":"Literary Theory","中外文学":"Chinese & World Literature"
+};
+export function subjectLabel(id:string,chinese:string){return subjectNames[id]??subjectNames[chinese]??titleFromId(id)}
+
+const categoryNames:Record<string,string>={"数学与计算机科学":"Math & Computer Science","自然科学":"Natural Sciences","社会科学":"Social Sciences","工程学":"Engineering","运动与营养":"Sports & Nutrition","艺术":"Arts","语言":"Languages","文学":"Literature"};
+export const categoryLabel=(name:string)=>categoryNames[name]??name;
+
+const topicNames:Record<string,string>={
+ intro:"Purpose",how:"How to Use This Site",plan:"Study Plan",tools:"Learning Tools",curriculum:"Undergraduate Curriculum",books:"Books & Resources",foundations:"Foundations",proofs:"Proof & Mathematical Language",math:"Mathematics & Statistics",cs:"Computer Science",econ:"Economics",stats:"Probability & Statistics",opt:"Optimization",crypto:"Cryptography",algo:"Algorithms",corp:"Corporate Finance",metrics:"Econometrics",fineng:"Financial Engineering",complex:"Complex Systems",robot:"Robotics",compbio:"Computational Biology",cogsci:"Cognitive Science",behavecon:"Behavioral Economics",neuroecon:"Neuroeconomics",compsocial:"Computational Social Science",network:"Network Science",econophysics:"Econophysics",quantumcomp:"Quantum Computing",psychometrics:"Psychometrics",mathbio:"Mathematical Biology",epidemiology:"Epidemiology",compneuro:"Computational Neuroscience",exercise:"Exercise Physiology",finearts:"Fine Arts",social:"Social Sciences",language:"Languages",literature:"Literature",engineering:"Engineering",accounting:"Financial Accounting",micro:"Microeconomics",macro:"Macroeconomics",econometrics:"Econometrics",corporate:"Corporate Finance",investments:"Investments",pricing:"Asset Pricing","fixed-income":"Fixed Income",valuation:"Company Research & Valuation",derivatives:"Derivatives & Financial Engineering","market-structure":"Market Microstructure & Algorithmic Trading",risk:"Risk Management","private-markets":"Private Equity & Venture Capital",empirical:"Empirical Finance",quant:"Quantitative Research","ml-finance":"Machine Learning & Alternative Data in Finance",fintech:"FinTech, Payments & Open Finance","digital-assets":"Digital Assets & Blockchain Finance","climate-finance":"Climate Finance & Sustainable Investing","financial-stability":"Financial Stability & Macroprudential Policy","macro-research":"Macroeconomic & Policy Research",behavioral:"Behavioral Finance",projects:"Projects & Advanced Study",calculus:"Calculus","linear-algebra":"Linear Algebra",probability:"Probability",statistics:"Statistics","differential-equations":"Differential Equations",discrete:"Discrete Mathematics","real-analysis":"Real Analysis","complex-analysis":"Complex Analysis","abstract-algebra":"Abstract Algebra","number-theory":"Number Theory","topology-geometry":"Topology & Geometry",cryptography:"Cryptography","stochastic-processes":"Stochastic Processes","information-theory":"Information Theory & Coding",optimization:"Optimization",numerical:"Numerical Computing",pde:"Partial Differential Equations","dynamical-systems":"Dynamical Systems & Chaos","network-science":"Network Science","ml-math":"Mathematics for Machine Learning",modeling:"Mathematical Modeling",programming:"Programming Foundations",algorithms:"Data Structures & Algorithms",architecture:"Computer Architecture",systems:"Operating Systems & Systems Programming",networks:"Computer Networks",databases:"Databases",compilers:"Programming Languages & Compilers",software:"Software Engineering",distributed:"Distributed Systems",cloud:"Cloud Computing & Cloud Native",data:"Data Science & Data Engineering",hci:"Human–Computer Interaction",ai:"Artificial Intelligence","machine-learning":"Machine Learning","deep-learning":"Deep Learning & Foundation Models",vision:"Computer Vision",nlp:"Natural Language Processing",robotics:"Robotics","autonomous-driving":"Autonomous Driving & Autonomous Systems",graphics:"Computer Graphics",security:"Computer Security",blockchain:"Blockchain",mechanics:"Classical Mechanics",electromagnetism:"Electromagnetism",waves:"Vibrations, Waves & Optics",thermo:"Thermodynamics & Statistical Physics",relativity:"Relativity",quantum:"Quantum Mechanics","atomic-optical":"Atomic, Molecular & Optical Physics","condensed-matter":"Condensed Matter & Materials Physics","quantum-information":"Quantum Information & Computing","particle-nuclear":"Particle & Nuclear Physics","quantum-field-theory":"Quantum Field Theory","astrophysics-cosmology":"Astrophysics & Cosmology","fluid-plasma":"Fluids, Plasma & Fusion","complex-systems":"Nonlinear & Complex Systems",biophysics:"Biophysics",experiment:"Experimental & Computational Physics",theory:"Theory","history-listening":"Music History, Listening & Criticism","world-popular":"World, Popular & Social Music",performance:"Performance & Ensemble",composition:"Composition, Arrangement & Songwriting","music-tech":"Recording, Production & Sound Design","computational-music":"Computational, Interactive & AI Music"
+};
+
+const acronyms:Record<string,string>={ai:"AI",api:"API",hci:"HCI",nlp:"NLP",ml:"ML",qft:"QFT",gis:"GIS",cad:"CAD",cfd:"CFD"};
+export function titleFromId(id:string){return id.split(/[/-]/).map(part=>acronyms[part]??`${part.charAt(0).toUpperCase()}${part.slice(1)}`).join(" ")}
+export function topicLabel(id:string,chinese:string){return topicNames[id]??(titleFromId(id)||chinese)}
+
+const groupNames:Record<string,string>={"开始之前":"Before You Begin","起点":"Getting Started","起点与课程地图":"Getting Started & Curriculum","共同基础":"Shared Foundations","基础":"Foundations","基础工具":"Foundations & Tools","经济学基础":"Economics Foundations","金融学核心":"Core Finance","大学核心":"Undergraduate Core","计算机核心":"Computer Science Core","结构与理论":"Structures & Theory","理论与文化":"Theory & Culture","创作与表演":"Creation & Performance","现代物理基础":"Modern Physics","研究与实践":"Research & Practice","实践与资源":"Practice & Resources","实践资源":"Practice & Resources","前沿与实践":"Frontiers & Practice","应用与前沿":"Applications & Frontiers","核心领域":"Core Fields","人工智能与智能系统":"AI & Intelligent Systems","软件与数据系统":"Software & Data Systems","图形、安全与新兴计算":"Graphics, Security & Emerging Computing","市场、机构与风险":"Markets, Institutions & Risk","数据与计算金融":"Data & Computational Finance","金融科技与前沿":"FinTech & Frontiers","组织与资源":"Organizations & Resources","价值创造":"Value Creation","自然科学核心":"Natural Science Core","人群与应用":"Populations & Applications","营养学核心":"Core Nutrition","工程核心":"Engineering Core"};
+export function groupLabel(chinese:string,index=0){return groupNames[chinese]??`Curriculum ${String(index+1).padStart(2,"0")}`}
+
+const kindNames:Record<string,string>={"公开课":"Open course","开放教材":"Open textbook","公开讲义":"Open notes","项目平台":"Project platform","论文":"Paper","工具":"Tool","公开资料":"Open resource","课程资料":"Course materials","项目资料":"Project materials","课程库":"Course catalog","公开数据":"Open data"};
+export const kindLabel=(kind?:string)=>kindNames[kind??""]??"Open resource";
+export const levelLabel=(level?:string)=>level?.includes("高级")?"Advanced":level?.includes("进阶")?"Intermediate":"Beginner";
+export function prerequisiteLabel(level?:string){return level?.includes("高级")?"Strong undergraduate foundations in this field":level?.includes("进阶")?"Complete the foundational modules first":"No formal prerequisites"}
+export function durationLabel(time:string){
+ if(time.includes("持续"))return "Ongoing";
+ const value=time.replace("按方向 ","By track: ").replace("同步进行 ","Alongside core: ").replace("约 ","About ").replace(/个月/g,"months").replace(/周/g,"weeks").replace(/年/g,"years");
+ return /[\u3400-\u9fff]/.test(value)?"Flexible pace":value;
+}
+export const institutionLabel=(name:string)=>({"北大":"Peking University","清华":"Tsinghua University","复旦":"Fudan University","南大":"Nanjing University","浙大":"Zhejiang University","央音":"Central Conservatory"} as Record<string,string>)[name]??name;
+export function resourceSummary(name:string,topic:string,kind?:string){return `${name} is a selected ${kindLabel(kind).toLowerCase()} for ${topic}. Follow the official materials and complete the available exercises or projects.`}
+export function subjectIntro(name:string){return `A structured self-study path from foundational concepts and undergraduate core work to modern research and practical projects in ${name}.`}
+export function subjectCaution(name:string){return `Build the foundations before moving to advanced topics in ${name}. Verify important claims with primary sources, document your work, and follow the safety and ethical requirements of any experiment or project.`}
+export function phaseForEnglish(link:string,index:number,mode?:string){
+ const topic=topicLabel(link,link);
+ const title=mode==="choice"?`Choose a direction in ${topic}`:mode==="ongoing"?`Apply and document your learning`:`Build capability in ${topic}`;
+ const goal=mode==="choice"?"Choose one direction that matches your goals; you do not need to complete every option.":mode==="parallel"?"Study this alongside the core sequence and connect it to your main track.":mode==="ongoing"?"Turn knowledge into reviewable, reproducible work and improve it through feedback.":"Develop the concepts and methods required for the next stage.";
+ return{title:`${String(index+1).padStart(2,"0")} · ${title}`,goal,learn:`Work through the core concepts, methods, exercises, and practical tasks in ${topic}.`,done:"Complete the recommended exercises and produce a project, analysis, or explanation that another person can review."};
+}

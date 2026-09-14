@@ -1,15 +1,19 @@
 import {useEffect,useRef,useState} from "react";
 import BrandLogo from "./BrandLogo";
+import LanguageToggle from "./LanguageToggle";
 import ThemeToggle from "./ThemeToggle";
+import {categoryLabel,pick,subjectLabel,useLanguage} from "./i18n";
 import {subjectCategories,type SubjectCategory} from "./subjectNavigation";
 
 const base=import.meta.env.BASE_URL;
 
 function MenuItems({category,onSelect}:{category:SubjectCategory;onSelect:()=>void}){
- return <>{category.items.map(item=><a href={item.href} key={item.name} onClick={onSelect}>{item.name}<small>进入学科</small></a>)}</>;
+ const {language}=useLanguage(),english=language==="en";
+ return <>{category.items.map(item=><a href={item.href} key={item.name} onClick={onSelect}>{english?subjectLabel(item.id,item.name):item.name}<small>{pick(language,"进入学科","Open path")}</small></a>)}</>;
 }
 
 export default function GlobalHeader({sidebarLabel}:{sidebarLabel?:string}){
+ const {language}=useLanguage(),english=language==="en";
  const [openCategory,setOpenCategory]=useState<string|null>(null),headerRef=useRef<HTMLElement>(null);
  useEffect(()=>{const close=(event:PointerEvent)=>{if(!headerRef.current?.contains(event.target as Node))setOpenCategory(null)},escape=(event:KeyboardEvent)=>{if(event.key==="Escape")setOpenCategory(null)};document.addEventListener("pointerdown",close);document.addEventListener("keydown",escape);return()=>{document.removeEventListener("pointerdown",close);document.removeEventListener("keydown",escape);document.body.classList.remove("menu-open")}},[]);
  const active=subjectCategories.find(category=>category.name===openCategory);
@@ -19,20 +23,20 @@ export default function GlobalHeader({sidebarLabel}:{sidebarLabel?:string}){
  return <>
   <header className={`platform-header${sidebarLabel?" subject-global-header":""}`} ref={headerRef}>
    <div className="platform-brand-row">
-    {sidebarLabel&&<button className="menu-button" aria-label={`打开${sidebarLabel}目录`} aria-expanded="false" onClick={event=>toggleSidebar(event.currentTarget)}><span/><span/><span/></button>}
-    <a className="platform-brand" href={base} aria-label="自学坊首页"><BrandLogo/><b>自学坊</b></a>
+    {sidebarLabel&&<button className="menu-button" aria-label={english?`Open ${subjectLabel(sidebarLabel,sidebarLabel)} contents`:`打开${sidebarLabel}目录`} aria-expanded="false" onClick={event=>toggleSidebar(event.currentTarget)}><span/><span/><span/></button>}
+    <a className="platform-brand" href={base} aria-label={pick(language,"自学坊首页","Self-Taught Fun home")}><BrandLogo/><b>{pick(language,"自学坊","Self-Taught Fun")}</b></a>
    </div>
-   <nav className="platform-nav" aria-label="学科分类导航">
+   <nav className="platform-nav" aria-label={pick(language,"学科分类导航","Discipline navigation")}>
     {subjectCategories.map(category=><div className={`subject-menu${openCategory===category.name?" open":""}`} key={category.name}>
-     <button type="button" aria-expanded={openCategory===category.name} onClick={()=>setOpenCategory(current=>current===category.name?null:category.name)}>{category.name}<i aria-hidden="true"/></button>
+     <button type="button" aria-expanded={openCategory===category.name} onClick={()=>setOpenCategory(current=>current===category.name?null:category.name)}>{english?categoryLabel(category.name):category.name}<i aria-hidden="true"/></button>
      <div className="subject-menu-panel"><MenuItems category={category} onSelect={closeCategory}/></div>
     </div>)}
-    <a className="platform-simple-link" href={`${base}opportunities/`} onClick={closeCategory}>比赛和资质</a>
-    <a className="platform-simple-link" href={`${base}#about`} onClick={closeCategory}>关于</a>
+    <a className="platform-simple-link" href={`${base}opportunities/`} onClick={closeCategory}>{pick(language,"比赛和资质","Competitions & Credentials")}</a>
+    <a className="platform-simple-link" href={`${base}#about`} onClick={closeCategory}>{pick(language,"关于","About")}</a>
    </nav>
-   <ThemeToggle/>
-   {active&&<div className="mobile-subject-panel"><strong>{active.name}</strong><MenuItems category={active} onSelect={closeCategory}/></div>}
+   <div className="header-controls"><LanguageToggle/><ThemeToggle/></div>
+   {active&&<div className="mobile-subject-panel"><strong>{english?categoryLabel(active.name):active.name}</strong><MenuItems category={active} onSelect={closeCategory}/></div>}
   </header>
-  {sidebarLabel&&<button className="mobile-overlay" aria-label={`关闭${sidebarLabel}目录`} onClick={closeSidebar}/>} 
+  {sidebarLabel&&<button className="mobile-overlay" aria-label={english?`Close ${subjectLabel(sidebarLabel,sidebarLabel)} contents`:`关闭${sidebarLabel}目录`} onClick={closeSidebar}/>}
  </>;
 }

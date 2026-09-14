@@ -1,10 +1,12 @@
 import {useEffect,useRef} from "react";
+import {pick,useLanguage} from "./i18n";
 
 const repo="ming1024yue/self-taught-fun";
 const repoId="R_kgDOUOOwiQ";
 const categoryId=import.meta.env.VITE_GISCUS_CATEGORY_ID?.trim()||"DIC_kwDOUOOwic4DFG11";
 
 export default function Comments({discussionKey}:{discussionKey:string}){
+ const {language}=useLanguage();
  const container=useRef<HTMLDivElement>(null);
  useEffect(()=>{
   if(!categoryId||!container.current)return;
@@ -26,7 +28,7 @@ export default function Comments({discussionKey}:{discussionKey:string}){
   script.dataset.inputPosition="top";
   const giscusTheme=()=>document.documentElement.dataset.theme==="dark"?"noborder_dark":"noborder_light";
   script.dataset.theme=giscusTheme();
-  script.dataset.lang="zh-CN";
+  script.dataset.lang=language==="en"?"en":"zh-CN";
   script.dataset.loading="lazy";
   target.append(script);
   const syncTheme=()=>target.querySelector<HTMLIFrameElement>(".giscus-frame")?.contentWindow?.postMessage({giscus:{setConfig:{theme:giscusTheme()}}},"https://giscus.app");
@@ -34,9 +36,9 @@ export default function Comments({discussionKey}:{discussionKey:string}){
   observer.observe(target,{childList:true});
   window.addEventListener("site-theme-change",syncTheme);
   return()=>{observer.disconnect();window.removeEventListener("site-theme-change",syncTheme);target.replaceChildren()};
- },[discussionKey]);
+ },[discussionKey,language]);
  return <section className="comments-section" aria-labelledby="comments-title">
-  <div className="comments-heading"><small>COMMUNITY</small><h2 id="comments-title">留言与讨论</h2><p>分享学习心得、补充资源或提出问题。留言由 GitHub Discussions 保存，登录 GitHub 后即可留言和回复。</p></div>
-  {categoryId?<div className="giscus" ref={container}/>:<div className="comments-pending"><b>留言区等待连接 GitHub Discussions</b><p>站点结构已经就绪；仓库完成 Discussions 与 giscus 配置后，留言框会自动出现在这里。</p></div>}
+  <div className="comments-heading"><small>COMMUNITY</small><h2 id="comments-title">{pick(language,"留言与讨论","Comments & Discussion")}</h2><p>{pick(language,"分享学习心得、补充资源或提出问题。留言由 GitHub Discussions 保存，登录 GitHub 后即可留言和回复。","Share what you learned, suggest a resource, or ask a question. Comments are stored in GitHub Discussions; sign in with GitHub to post and reply.")}</p></div>
+  {categoryId?<div className="giscus" ref={container}/>:<div className="comments-pending"><b>{pick(language,"留言区等待连接 GitHub Discussions","Comments are waiting for GitHub Discussions")}</b><p>{pick(language,"站点结构已经就绪；仓库完成 Discussions 与 giscus 配置后，留言框会自动出现在这里。","The page is ready. The comment box will appear after Discussions and giscus are configured for the repository.")}</p></div>}
  </section>;
 }

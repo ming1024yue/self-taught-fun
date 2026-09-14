@@ -1,4 +1,5 @@
 import {useEffect,useRef,useState} from "react";
+import {pick,subjectLabel,topicLabel,useLanguage} from "./i18n";
 type Node={id:string;label:string;group:string;x:number;y:number;size:number};
 type View={x:number;y:number;scale:number};
 const colors:Record<string,string>={数学:"#8794ad",计算机:"#789b96",经济学:"#aa9474",金融:"#78977f",物理:"#9187a5",化学:"#9a8f78",生物:"#7f9b86",心理学:"#a58c9d",社会科学:"#a28f7c",历史:"#9b8875",工程学:"#8d8379",运动科学:"#77958c",营养学:"#a29072",艺术:"#a7837d",设计:"#788d9c",音乐:"#91839d",语言:"#8f829d",文学:"#9d7f86",交叉领域:"#505860"};
@@ -53,6 +54,7 @@ const descriptions:Record<string,string>={
 };
 
 export default function KnowledgeGraph(){
+ const {language}=useLanguage(),english=language==="en";
  const canvasRef=useRef<HTMLCanvasElement>(null),nodesRef=useRef(initialNodes.map(node=>({...node}))),viewRef=useRef<View>({x:0,y:0,scale:1}),activeId=useRef<string|null>(null),dragRef=useRef<{kind:"node";id:string}|{kind:"pan";x:number;y:number;ox:number;oy:number}|null>(null),drawRef=useRef<()=>void>(()=>{});
  const [active,setActive]=useState<Node|null>(null),[zoom,setZoom]=useState(100);
  useEffect(()=>{const canvas=canvasRef.current;if(!canvas)return;const draw=()=>{
@@ -63,8 +65,8 @@ export default function KnowledgeGraph(){
   const line=css("--graph-line","#d8dcda"),activeLine=css("--graph-line-active","#8e9691"),mutedLine=css("--graph-line-muted","rgba(174,180,176,.2)"),label=css("--graph-label","#343a40"),selectedStroke=css("--graph-selected-stroke","#fff");
   const v=viewRef.current,selectedId=activeId.current,pos=(n:Node)=>({x:n.x*rect.width*v.scale+v.x,y:n.y*rect.height*v.scale+v.y});
   for(const [a,b] of edges){const related=!selectedId||a===selectedId||b===selectedId,p=pos(nodesRef.current.find(n=>n.id===a)!),q=pos(nodesRef.current.find(n=>n.id===b)!);c.strokeStyle=selectedId?(related?activeLine:mutedLine):line;c.lineWidth=selectedId&&related?1.6:1;c.beginPath();c.moveTo(p.x,p.y);c.lineTo(q.x,q.y);c.stroke()}
-  for(const n of nodesRef.current){const p=pos(n),selected=selectedId===n.id;c.beginPath();c.arc(p.x,p.y,n.size+(selected?3:0),0,Math.PI*2);c.fillStyle=colors[n.group];c.fill();if(selected){c.strokeStyle=selectedStroke;c.lineWidth=2;c.stroke()}if(n.size>=7||selected){c.font=`${selected?600:500} 12px -apple-system, sans-serif`;c.fillStyle=label;c.fillText(n.label,p.x+n.size+7,p.y+4)}}
- };drawRef.current=draw;draw();const observer=new ResizeObserver(draw);observer.observe(canvas);window.addEventListener("site-theme-change",draw);return()=>{observer.disconnect();window.removeEventListener("site-theme-change",draw)}},[]);
+  for(const n of nodesRef.current){const p=pos(n),selected=selectedId===n.id;c.beginPath();c.arc(p.x,p.y,n.size+(selected?3:0),0,Math.PI*2);c.fillStyle=colors[n.group];c.fill();if(selected){c.strokeStyle=selectedStroke;c.lineWidth=2;c.stroke()}if(n.size>=7||selected){c.font=`${selected?600:500} 12px -apple-system, sans-serif`;c.fillStyle=label;c.fillText(english?topicLabel(n.id,n.label):n.label,p.x+n.size+7,p.y+4)}}
+ };drawRef.current=draw;draw();const observer=new ResizeObserver(draw);observer.observe(canvas);window.addEventListener("site-theme-change",draw);return()=>{observer.disconnect();window.removeEventListener("site-theme-change",draw)}},[english]);
  const local=(e:{currentTarget:HTMLCanvasElement;clientX:number;clientY:number})=>{const r=e.currentTarget.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top,r}};
  const hit=(x:number,y:number,r:DOMRect)=>{const v=viewRef.current;let found:Node|null=null,best=24;for(const n of nodesRef.current){const d=Math.hypot(x-(n.x*r.width*v.scale+v.x),y-(n.y*r.height*v.scale+v.y));if(d<best){best=d;found=n}}return found};
  const activate=(node:Node|null)=>{if(activeId.current===node?.id)return;activeId.current=node?.id??null;setActive(node?{...node}:null);drawRef.current()};
@@ -73,13 +75,13 @@ export default function KnowledgeGraph(){
  const finish=(e:React.PointerEvent<HTMLCanvasElement>)=>{dragRef.current=null;e.currentTarget.classList.remove("dragging-node","panning");if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId)};
  const changeZoom=(value:number)=>{const canvas=canvasRef.current;if(!canvas)return;const r=canvas.getBoundingClientRect(),v=viewRef.current,next=value/100,ratio=next/v.scale,cx=r.width/2,cy=r.height/2;v.x=cx-(cx-v.x)*ratio;v.y=cy-(cy-v.y)*ratio;v.scale=next;setZoom(value);drawRef.current()};
  return <section className="knowledge-section" id="knowledge-graph">
-  <div className="knowledge-heading"><small>KNOWLEDGE GRAPH</small><h2>知识不是孤立的章节</h2><p>每个点代表一个知识，线表示真实的知识依赖或方法交汇。高阶领域通常位于多个基础学科之间。</p></div>
+  <div className="knowledge-heading"><small>KNOWLEDGE GRAPH</small><h2>{pick(language,"知识不是孤立的章节","Knowledge is connected")}</h2><p>{pick(language,"每个点代表一个知识，线表示真实的知识依赖或方法交汇。高阶领域通常位于多个基础学科之间。","Each node represents a field of knowledge; each line marks a real dependency or methodological connection. Advanced fields often sit between several foundations.")}</p></div>
   <div className="graph-shell">
-   <canvas ref={canvasRef} onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={finish} onPointerCancel={finish} onPointerLeave={e=>{if(!dragRef.current)activate(null);e.currentTarget.classList.remove("dragging-node","panning")}} role="img" aria-label="包含艺术、设计、计算生物学、认知科学、网络科学等领域的可拖拽跨学科知识图谱"/>
-   <label className="graph-zoom"><span>缩放</span><input type="range" min="70" max="220" step="5" value={zoom} onChange={e=>changeZoom(Number(e.currentTarget.value))} aria-label="调整知识图谱缩放比例"/><output>{zoom}%</output></label>
-   <div className="graph-tooltip" aria-live="polite">{active?<><b>{active.label}</b><span>{descriptions[active.id]??active.group}</span></>:<><b>探索知识图谱</b><span>悬停查看学科构成 · 拖动节点调整位置</span></>}</div>
+   <canvas ref={canvasRef} onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={finish} onPointerCancel={finish} onPointerLeave={e=>{if(!dragRef.current)activate(null);e.currentTarget.classList.remove("dragging-node","panning")}} role="img" aria-label={pick(language,"包含艺术、设计、计算生物学、认知科学、网络科学等领域的可拖拽跨学科知识图谱","A draggable interdisciplinary knowledge graph covering the arts, sciences, engineering, and the humanities")}/>
+   <label className="graph-zoom"><span>{pick(language,"缩放","Zoom")}</span><input type="range" min="70" max="220" step="5" value={zoom} onChange={e=>changeZoom(Number(e.currentTarget.value))} aria-label={pick(language,"调整知识图谱缩放比例","Adjust knowledge graph zoom")}/><output>{zoom}%</output></label>
+   <div className="graph-tooltip" aria-live="polite">{active?<><b>{english?topicLabel(active.id,active.label):active.label}</b><span>{english?"A field connecting multiple disciplines, methods, and applications.":descriptions[active.id]??active.group}</span></>:<><b>{pick(language,"探索知识图谱","Explore the graph")}</b><span>{pick(language,"悬停查看学科构成 · 拖动节点调整位置","Hover to inspect · Drag nodes to rearrange")}</span></>}</div>
   </div>
-  <div className="graph-legend">{Object.entries(colors).map(([name,color])=><span key={name}><i style={{background:color}}/>{name}</span>)}</div>
-  <p className="graph-note">交叉领域依据其实际使用的理论与方法连接；悬停节点时，与它直接相关的连线会被突出显示。</p>
+  <div className="graph-legend">{Object.entries(colors).map(([name,color])=><span key={name}><i style={{background:color}}/>{english?subjectLabel(name,name):name}</span>)}</div>
+  <p className="graph-note">{pick(language,"交叉领域依据其实际使用的理论与方法连接；悬停节点时，与它直接相关的连线会被突出显示。","Connections reflect theories and methods actually shared across fields. Hover over a node to highlight its direct links.")}</p>
  </section>
 }
