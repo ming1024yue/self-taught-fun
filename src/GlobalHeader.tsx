@@ -1,5 +1,6 @@
 import {useEffect,useRef,useState} from "react";
 import BrandLogo from "./BrandLogo";
+import ThemeToggle from "./ThemeToggle";
 import {subjectCategories,type SubjectCategory} from "./subjectNavigation";
 
 const base=import.meta.env.BASE_URL;
@@ -29,6 +30,7 @@ export default function GlobalHeader({sidebarLabel}:{sidebarLabel?:string}){
     <a className="platform-simple-link" href={`${base}opportunities/`} onClick={closeCategory}>比赛和资质</a>
     <a className="platform-simple-link" href={`${base}#about`} onClick={closeCategory}>关于</a>
    </nav>
+   <ThemeToggle/>
    {active&&<div className="mobile-subject-panel"><strong>{active.name}</strong><MenuItems category={active} onSelect={closeCategory}/></div>}
   </header>
   {sidebarLabel&&<button className="mobile-overlay" aria-label={`关闭${sidebarLabel}目录`} onClick={closeSidebar}/>} 

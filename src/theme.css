@@ -1,0 +1,193 @@
+:root {
+  --header-bg: rgba(245, 245, 247, .88);
+  --surface: #fff;
+  --surface-soft: #efeff2;
+  --strong-line: var(--ink);
+  --link: #2457a7;
+  --graph-line: #d8dcda;
+  --graph-line-active: #8e9691;
+  --graph-line-muted: rgba(174, 180, 176, .2);
+  --graph-label: #343a40;
+  --graph-selected-stroke: #fff;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --ink: #efede8;
+  --cream: #151515;
+  --cream-deep: #202020;
+  --soft: #aaa9a5;
+  --line: #383838;
+  --muted: #aaa9a5;
+  --header-bg: rgba(21, 21, 21, .84);
+  --surface: #1b1b1b;
+  --surface-soft: #242424;
+  --strong-line: #61615e;
+  --link: #aabbd4;
+  --course: #789782;
+  --paper: #aa7470;
+  --book: #7389a5;
+  --graph-line: #3d4140;
+  --graph-line-active: #8a918d;
+  --graph-line-muted: rgba(116, 122, 119, .16);
+  --graph-label: #d7d6d2;
+  --graph-selected-stroke: #f5f3ee;
+  color-scheme: dark;
+}
+
+body,header,.sidebar,.platform,.platform-main,.platform-about,.knowledge-section,.opportunity-page,
+.subject-card,.card,.course-portals article,.curriculum-grid article,.comments-pending,.education-notice {
+  transition: background-color .24s ease, color .24s ease, border-color .24s ease;
+}
+
+.theme-toggle {
+  display: grid;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  margin-left: 2px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease, color .2s ease;
+}
+
+.theme-toggle:hover { background: var(--cream-deep); transform: rotate(12deg); }
+.theme-toggle:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; }
+.theme-toggle-icon {
+  position: relative;
+  display: block;
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  border: 1.4px solid currentColor;
+  border-radius: 50%;
+  transform: rotate(-35deg);
+  transition: transform .28s ease;
+}
+.theme-toggle-icon::after { position: absolute; inset: -1px -1px -1px 50%; background: currentColor; content: ""; }
+:root[data-theme="dark"] .theme-toggle-icon { transform: rotate(145deg); }
+
+:root[data-theme="dark"] body { background: var(--cream); color: var(--ink); }
+:root[data-theme="dark"] header { border-color: var(--line); background: var(--header-bg); }
+:root[data-theme="dark"] .brand-logo { color: var(--ink); }
+:root[data-theme="dark"] .menu-button span { background: var(--ink); }
+:root[data-theme="dark"] .sidebar { background: var(--cream); border-color: var(--line); }
+:root[data-theme="dark"] .sidebar h3,
+:root[data-theme="dark"] .sidebar-curriculum span,
+:root[data-theme="dark"] .phase-meta,
+:root[data-theme="dark"] .card small,
+:root[data-theme="dark"] dt,
+:root[data-theme="dark"] .library-list small,
+:root[data-theme="dark"] .course-portals span,
+:root[data-theme="dark"] .comments-heading small { color: #92928f; }
+:root[data-theme="dark"] .sidebar .sidebar-curriculum a { color: #aaa9a5; }
+:root[data-theme="dark"] .sidebar .sidebar-curriculum a:hover { color: var(--ink); }
+:root[data-theme="dark"] .sidebar-curriculum { border-color: var(--line); }
+
+:root[data-theme="dark"] .subject-menu-panel,
+:root[data-theme="dark"] .mobile-subject-panel {
+  border-color: var(--line);
+  background: rgba(28, 28, 28, .97);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .36);
+}
+:root[data-theme="dark"] .subject-menu-panel > a,
+:root[data-theme="dark"] .mobile-subject-panel > a { color: var(--ink); }
+:root[data-theme="dark"] .subject-menu-panel > a:hover,
+:root[data-theme="dark"] .mobile-subject-panel > a:hover { color: var(--ink); background: rgba(255, 255, 255, .08); }
+:root[data-theme="dark"] .subject-menu-panel small,
+:root[data-theme="dark"] .mobile-subject-panel small,
+:root[data-theme="dark"] .mobile-subject-panel > strong { color: #999995; }
+
+:root[data-theme="dark"] .subject-grid,
+:root[data-theme="dark"] .legend,
+:root[data-theme="dark"] .path-chooser,
+:root[data-theme="dark"] .opportunity-grid { border-color: var(--strong-line); }
+:root[data-theme="dark"] .subject-card,
+:root[data-theme="dark"] .legend > div,
+:root[data-theme="dark"] .path-chooser > a,
+:root[data-theme="dark"] .opportunity-card { border-color: var(--strong-line); }
+:root[data-theme="dark"] .platform-contact a { color: var(--ink); border-color: rgba(239, 237, 232, .35); }
+:root[data-theme="dark"] .platform-contact a:hover { border-color: var(--ink); }
+
+:root[data-theme="dark"] .hero aside,
+:root[data-theme="dark"] .opportunity-hero aside,
+:root[data-theme="dark"] .opportunity-detail-hero aside { background: #e6e3dc; color: #181818; }
+:root[data-theme="dark"] .beginner-note,
+:root[data-theme="dark"] .comments-pending,
+:root[data-theme="dark"] .curriculum-grid article { background: var(--surface); }
+:root[data-theme="dark"] .learning-timeline { border-color: var(--strong-line); background: rgba(255, 255, 255, .025); }
+:root[data-theme="dark"] .timeline-node { border-color: var(--strong-line); background: var(--cream); }
+:root[data-theme="dark"] .timeline-scroll ol::before { background: var(--strong-line); }
+:root[data-theme="dark"] .timeline-note { border-color: var(--line); }
+:root[data-theme="dark"] .plan-intro,
+:root[data-theme="dark"] .beginner-note li,
+:root[data-theme="dark"] .phase-goal,
+:root[data-theme="dark"] .weekly p,
+:root[data-theme="dark"] .tool-list span { color: var(--muted); }
+:root[data-theme="dark"] .phase-meta b { color: #bcbab5; }
+:root[data-theme="dark"] .plan-steps a,
+:root[data-theme="dark"] .curriculum-source,
+:root[data-theme="dark"] .tool-list a { color: var(--link); }
+
+:root[data-theme="dark"] .graph-shell {
+  border-color: var(--line);
+  background-color: transparent;
+  background-image: radial-gradient(rgba(239, 237, 232, .12) 1px, transparent 1px);
+}
+:root[data-theme="dark"] .graph-tooltip,
+:root[data-theme="dark"] .graph-shell::after,
+:root[data-theme="dark"] .graph-zoom { border-color: var(--line); background: rgba(24, 24, 24, .78); color: #aaa9a5; }
+:root[data-theme="dark"] .graph-tooltip span,
+:root[data-theme="dark"] .graph-note,
+:root[data-theme="dark"] .graph-legend span { color: #999995; }
+:root[data-theme="dark"] .graph-zoom input::-webkit-slider-runnable-track { background: rgba(239, 237, 232, .24); }
+:root[data-theme="dark"] .graph-zoom input::-webkit-slider-thumb { background: rgba(239, 237, 232, .8); }
+:root[data-theme="dark"] .graph-zoom input::-moz-range-track { background: rgba(239, 237, 232, .24); }
+:root[data-theme="dark"] .graph-zoom input::-moz-range-thumb { background: rgba(239, 237, 232, .8); }
+:root[data-theme="dark"] .graph-zoom output { color: #c5c3be; }
+
+:root[data-theme="dark"] .anchor-list a { border-color: var(--strong-line); }
+:root[data-theme="dark"] .opportunity-card dl,
+:root[data-theme="dark"] .opportunity-card dl > div { border-color: var(--line); }
+:root[data-theme="dark"] .opportunity-card-head,
+:root[data-theme="dark"] .opportunity-card dt { color: #999995; }
+:root[data-theme="dark"] .verification-note { border-color: var(--strong-line); }
+
+:root[data-theme="dark"] .subject-card:hover p,
+:root[data-theme="dark"] .subject-card:hover small,
+:root[data-theme="dark"] .subject-card:hover footer,
+:root[data-theme="dark"] .subject-card:hover footer b,
+:root[data-theme="dark"] .subject-card:hover footer span,
+:root[data-theme="dark"] .subject-card:hover .subject-num,
+:root[data-theme="dark"] .card:hover p,
+:root[data-theme="dark"] .card:hover small,
+:root[data-theme="dark"] .card:hover dt,
+:root[data-theme="dark"] .course-portals article:hover p,
+:root[data-theme="dark"] .course-portals article:hover span,
+:root[data-theme="dark"] .opportunity-card:hover p,
+:root[data-theme="dark"] .opportunity-card:hover dt,
+:root[data-theme="dark"] .opportunity-card:hover .opportunity-card-head,
+:root[data-theme="dark"] .path-chooser > a:hover span { color: #555550; }
+
+:root[data-theme="dark"] .education-notice {
+  border-color: rgba(239, 237, 232, .12);
+  background: rgba(24, 24, 24, .8);
+  box-shadow: 0 3px 16px rgba(0, 0, 0, .2);
+  color: rgba(220, 218, 212, .65);
+}
+:root[data-theme="dark"] .mobile-overlay { background: rgba(0, 0, 0, .54); }
+
+@media (max-width: 1120px) {
+  .platform-brand-row { padding-right: 62px; }
+  .platform-header > .theme-toggle { position: absolute; z-index: 13; top: calc(5px + env(safe-area-inset-top, 0px)); right: 17px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,header,.sidebar,.platform,.platform-main,.platform-about,.knowledge-section,.opportunity-page,
+  .subject-card,.card,.course-portals article,.curriculum-grid article,.comments-pending,.education-notice,.theme-toggle,.theme-toggle-icon { transition: none; }
+}

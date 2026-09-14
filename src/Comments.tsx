@@ -24,11 +24,16 @@ export default function Comments({discussionKey}:{discussionKey:string}){
   script.dataset.reactionsEnabled="1";
   script.dataset.emitMetadata="0";
   script.dataset.inputPosition="top";
-  script.dataset.theme="noborder_light";
+  const giscusTheme=()=>document.documentElement.dataset.theme==="dark"?"noborder_dark":"noborder_light";
+  script.dataset.theme=giscusTheme();
   script.dataset.lang="zh-CN";
   script.dataset.loading="lazy";
   target.append(script);
-  return()=>target.replaceChildren();
+  const syncTheme=()=>target.querySelector<HTMLIFrameElement>(".giscus-frame")?.contentWindow?.postMessage({giscus:{setConfig:{theme:giscusTheme()}}},"https://giscus.app");
+  const observer=new MutationObserver(syncTheme);
+  observer.observe(target,{childList:true});
+  window.addEventListener("site-theme-change",syncTheme);
+  return()=>{observer.disconnect();window.removeEventListener("site-theme-change",syncTheme);target.replaceChildren()};
  },[discussionKey]);
  return <section className="comments-section" aria-labelledby="comments-title">
   <div className="comments-heading"><small>COMMUNITY</small><h2 id="comments-title">留言与讨论</h2><p>分享学习心得、补充资源或提出问题。留言由 GitHub Discussions 保存，登录 GitHub 后即可留言和回复。</p></div>

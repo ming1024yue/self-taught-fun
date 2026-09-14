@@ -28,6 +28,7 @@ import{enableAnalytics}from"./analytics";
 import"./styles.css";import"./tools.css";import"./plan.css";import"./books.css";import"./mobile.css";import"./platform.css";import"./knowledge.css";import"./graph-interaction.css";import"./ollivere-theme.css";import"./comments.css";
 import"./subject-menu.css";
 import"./curriculum.css";import"./opportunities.css";
+import"./theme.css";
 
 const base=import.meta.env.BASE_URL.replace(/\/$/,"");
 let path=location.pathname.replace(base,"");
