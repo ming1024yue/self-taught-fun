@@ -1,0 +1,18 @@
+# Keep the checker strict for genuinely missing pages while accommodating
+# public education sites that block or rate-limit automated clients.
+max_retries = 3
+retry_wait_time = 3
+timeout = 45
+max_concurrency = 12
+host_concurrency = 2
+host_request_interval = "250ms"
+method = "get"
+user_agent = "Mozilla/5.0 (compatible; SelfTaughtFunLinkCheck/1.0; +https://selftaught.fun/)"
+
+# 403/412 usually mean bot protection, and 429 means rate limiting. Real 404s
+# and server/network failures still fail unless explicitly documented below.
+accept = ["200..=399", "403", "412", "429"]
+
+[hosts."www.metmuseum.org"]
+concurrency = 1
+request_interval = "2s"

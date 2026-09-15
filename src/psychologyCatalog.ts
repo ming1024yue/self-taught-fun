@@ -2,7 +2,6 @@ import {r,type SubjectConfig,type Topic} from "./subjectTypes";
 
 const t=(title:string,intro:string,resources:ReturnType<typeof r>[]):Topic=>({title,intro,resources});
 const start=["开始之前",[["intro","本站目的"],["how","如何使用本站"],["plan","学习规划"]]] as const;
-const openStax="https://openstax.org/books/psychology-2e/pages/";
 const mitIntro="https://ocw.mit.edu/courses/9-00sc-introduction-to-psychology-fall-2011/";
 
 const topics:Record<string,Topic>={
@@ -25,27 +24,27 @@ const topics:Record<string,Topic>={
   r("Yale PSYC 110 Introduction to Psychology","https://oyc.yale.edu/introduction-psychology/psyc-110","进阶","公开课","无需前置","以清晰讲授串联知觉、发展、社会行为、人格和异常心理。")
  ]),
  biological:t("生物心理学与神经科学","从神经元、脑区、网络、激素与遗传机制理解行为，同时学习神经证据能够和不能说明什么。",[
-  r("OpenStax Psychology 2e: Biopsychology",`${openStax}3-introduction`,"入门","开放教材","普通生物基础","建立神经元、神经系统、脑区、内分泌和遗传的基础语言。"),
+  r("OpenStax Psychology 2e: Biopsychology","https://openstax.org/books/psychology-2e/pages/3-introduction","入门","开放教材","普通生物基础","建立神经元、神经系统、脑区、内分泌和遗传的基础语言。"),
   r("MIT 9.01 Neuroscience and Behavior","https://ocw.mit.edu/courses/9-01-neuroscience-and-behavior-fall-2003/","进阶","公开课","生物学与心理学导论","连接神经解剖、生理、感觉、运动、奖赏、情绪、学习和记忆。"),
   r("MIT 9.13 The Human Brain","https://ocw.mit.edu/courses/9-13-the-human-brain-spring-2019/","高级","公开课","神经科学、认知心理学与研究方法","通过视频、讲义和作业分析人脸、空间、语言、音乐与社会认知的脑网络。")
  ]),
  perception:t("感觉、知觉与意识","研究大脑如何从光、声音和身体信号构造经验，以及注意、意识和测量方法的关系。",[
-  r("OpenStax Psychology 2e: Sensation and Perception",`${openStax}5-introduction`,"入门","开放教材","心理学导论","认识心理物理学、视觉、听觉、化学感觉、身体感觉和知觉组织。"),
+  r("OpenStax Psychology 2e: Sensation and Perception","https://openstax.org/books/psychology-2e/pages/5-introduction","入门","开放教材","心理学导论","认识心理物理学、视觉、听觉、化学感觉、身体感觉和知觉组织。"),
   r("MIT 9.04 Sensory Systems","https://ocw.mit.edu/courses/9-04-sensory-systems-fall-2013/","进阶","公开课","神经科学基础","通过完整视频、讲义和作业研究视觉、听觉和躯体感觉的神经机制。"),
   r("MIT 9.10 Cognitive Neuroscience","https://ocw.mit.edu/courses/9-10-cognitive-neuroscience-spring-2006/","高级","公开课","认知心理学、神经科学与实验设计","比较行为、病损与成像证据，分析注意、知觉、语言、导航和记忆。")
  ]),
  "learning-memory":t("学习与记忆","理解条件作用、强化、技能学习以及工作记忆、情景记忆和长期记忆的行为与神经机制。",[
-  r("OpenStax Psychology 2e: Learning",`${openStax}6-introduction`,"入门","开放教材","心理学导论","从经典条件作用、操作性条件作用和观察学习进入学习理论，并配合第 8 章学习记忆。"),
+  r("OpenStax Psychology 2e: Learning","https://openstax.org/books/psychology-2e/pages/6-introduction","入门","开放教材","心理学导论","从经典条件作用、操作性条件作用和观察学习进入学习理论，并配合第 8 章学习记忆。"),
   r("MIT 9.00SC: Learning",`${mitIntro}pages/learning/`,"进阶","公开课","心理学导论","用视频、阅读、讨论和自测比较不同学习机制及其现实应用。"),
   r("MIT 9.03 Neural Basis of Learning and Memory","https://ocw.mit.edu/courses/9-03-neural-basis-of-learning-and-memory-fall-2007/","高级","公开课","神经科学、细胞生物学与认知心理学","连接突触与分子机制、海马系统、动物模型和人类记忆研究。")
  ]),
  cognitive:t("认知心理学","研究注意、表征、语言、问题解决、推理、智能与决策，并比较行为、计算和神经三种解释层次。",[
-  r("OpenStax Psychology 2e: Thinking and Intelligence",`${openStax}7-introduction`,"入门","开放教材","心理学导论","从概念、语言、问题解决和智能测量建立认知心理学地图。"),
+  r("OpenStax Psychology 2e: Thinking and Intelligence","https://openstax.org/books/psychology-2e/pages/7-introduction","入门","开放教材","心理学导论","从概念、语言、问题解决和智能测量建立认知心理学地图。"),
   r("MIT 9.69 Foundations of Cognition","https://ocw.mit.edu/courses/9-69-foundations-of-cognition-spring-2003/","进阶","公开课","一门心理学、哲学、语言学或人工智能课程","围绕颜色、数量、因果、推理、道德和意识比较哲学问题与实验研究。"),
   r("MIT 9.012 Brain and Cognitive Sciences II","https://ocw.mit.edu/courses/9-012-the-brain-and-cognitive-sciences-ii-spring-2006/","高级","公开课","认知心理学、神经科学、统计与论文阅读","从行为、计算和神经层面研读知觉、语言、记忆、学习与决策的研究。")
  ]),
  emotion:t("情绪、动机与自我调节","研究情绪如何被产生、表达和调节，以及奖赏、目标和自我控制怎样组织行为。",[
-  r("OpenStax Psychology 2e: Motivation and Emotion",`${openStax}10-introduction`,"入门","开放教材","心理学导论","建立动机、饥饿、性、情绪理论和情绪表达的基础框架。"),
+  r("OpenStax Psychology 2e: Motivation and Emotion","https://openstax.org/books/psychology-2e/pages/10-introduction","入门","开放教材","心理学导论","建立动机、饥饿、性、情绪理论和情绪表达的基础框架。"),
   r("MIT 9.00SC: Emotion and Motivation",`${mitIntro}pages/emotion-motivation/`,"进阶","公开课","心理学导论与生物基础","用课程视频和讨论连接生理唤醒、认知评价、脑机制与文化。"),
   r("Noba: Affective Neuroscience","https://nobaproject.com/modules/affective-neuroscience","高级","开放教材","神经科学、情绪理论与研究方法","综合人和动物研究，理解情绪系统、脑网络与神经递质，同时辨别证据限制。")
  ]),
@@ -60,12 +59,12 @@ const topics:Record<string,Topic>={
   r("MIT 9.85 Infant and Early Childhood Cognition","https://ocw.mit.edu/courses/9-85-infant-and-early-childhood-cognition-fall-2012/","高级","公开课","发展心理学、实验设计与论文阅读","围绕物体、因果、代理人和知识起源完成研究提案、评论与海报练习。")
  ]),
  personality:t("人格与个体差异","学习特质、能力、自我与身份如何被定义和测量，区分连续维度、类型标签和临床诊断。",[
-  r("OpenStax Psychology 2e: Personality",`${openStax}11-introduction`,"入门","开放教材","心理学导论","比较心理动力、学习、人本、生物与特质取向。"),
+  r("OpenStax Psychology 2e: Personality","https://openstax.org/books/psychology-2e/pages/11-introduction","入门","开放教材","心理学导论","比较心理动力、学习、人本、生物与特质取向。"),
   r("Noba: Personality Traits","https://nobaproject.com/modules/personality-traits","进阶","开放教材","研究方法与心理测量","以五因素模型进入特质结构、稳定性和人格—情境争论。"),
   r("Noba: Personality Assessment","https://nobaproject.com/modules/personality-assessment","高级","开放教材","心理测量、统计与人格理论","比较自陈、他评、投射、内隐和行为测量的信效度及适用边界。")
  ]),
  "social-cultural":t("社会与文化心理学","研究情境、群体、关系、权力与文化如何塑造认知、情绪和行为，避免把单一文化样本当作普遍人性。",[
-  r("OpenStax Psychology 2e: Social Psychology",`${openStax}12-introduction`,"入门","开放教材","心理学导论","介绍归因、态度、说服、从众、群际关系、亲社会行为和攻击。"),
+  r("OpenStax Psychology 2e: Social Psychology","https://openstax.org/books/psychology-2e/pages/12-introduction","入门","开放教材","心理学导论","介绍归因、态度、说服、从众、群际关系、亲社会行为和攻击。"),
   r("MIT 9.70 Social Psychology","https://ocw.mit.edu/courses/9-70-social-psychology-spring-2013/","进阶","公开课","研究方法与基础统计","通过活动、讲义和写作分析社会认知、态度、群体与关系。"),
   r("Noba: Culture","https://nobaproject.com/modules/culture","高级","开放教材","社会心理学与研究设计","理解文化作为心理过程，并学习跨文化比较中的概念、测量和解释风险。")
  ]),
@@ -75,22 +74,22 @@ const topics:Record<string,Topic>={
   r("MIT 15.301 Managerial Psychology Laboratory","https://ocw.mit.edu/courses/15-301-managerial-psychology-laboratory-fall-2004/","高级","公开课","统计、实验设计与社会心理学","用问卷、现场实验和研究论文练习决策、金钱、群体与谈判问题。")
  ]),
  clinical:t("异常与临床心理学","理解心理障碍的分类、风险因素、评估与循证干预，也认识诊断体系、文化和专业资格的边界。",[
-  r("OpenStax Psychology 2e: Psychological Disorders",`${openStax}15-introduction`,"入门","开放教材","心理学导论","概览障碍分类、症状、流行病学和生物—心理—社会解释。"),
+  r("OpenStax Psychology 2e: Psychological Disorders","https://openstax.org/books/psychology-2e/pages/15-introduction","入门","开放教材","心理学导论","概览障碍分类、症状、流行病学和生物—心理—社会解释。"),
   r("北京大学：医学心理学","https://www.icourse163.org/course/PKU-1461542169","进阶","公开课","心理学导论与生物基础","中文课程连接认知、人格、心理卫生、心身疾病、评估、治疗和医患关系。"),
   r("APA Standards and Clinical Practice Guidelines","https://www.apa.org/research-practice/standards-guidelines","高级","公开讲义","异常心理学、研究方法与统计","学习如何评估治疗建议背后的证据强度、适用人群和专业实践规范；不用于自行诊断。")
  ]),
  health:t("健康心理学","用生物—心理—社会模型研究压力、健康行为、慢性病、疼痛和医患沟通，并重视社会环境与健康不平等。",[
-  r("OpenStax Psychology 2e: Stress, Lifestyle, and Health",`${openStax}14-introduction`,"入门","开放教材","心理学导论","认识压力反应、应对、社会支持、健康行为与身心关系。"),
+  r("OpenStax Psychology 2e: Stress, Lifestyle, and Health","https://openstax.org/books/psychology-2e/pages/14-introduction","入门","开放教材","心理学导论","认识压力反应、应对、社会支持、健康行为与身心关系。"),
   r("Noba: The Healthy Life","https://nobaproject.com/modules/the-healthy-life","进阶","开放教材","研究方法、生物与社会心理学","以实证研究理解压力、行为和社会因素如何影响身体健康。"),
   r("MIT 9.00SC: Stress",`${mitIntro}pages/stress/`,"高级","公开课","生物心理学与研究方法","结合视频、阅读和讨论分析应激生理、控制感、社会地位与健康。")
  ]),
  educational:t("教育心理学与学习科学","研究知识如何获得、练习如何设计、动机和反馈如何影响学习，以及研究结论怎样谨慎进入课堂。",[
-  r("OpenStax Psychology 2e: Learning",`${openStax}6-introduction`,"入门","开放教材","心理学导论","先掌握条件作用、观察学习和认知因素，再把概念用于教学问题。"),
+  r("OpenStax Psychology 2e: Learning","https://openstax.org/books/psychology-2e/pages/6-introduction","入门","开放教材","心理学导论","先掌握条件作用、观察学习和认知因素，再把概念用于教学问题。"),
   r("北京师范大学：教育心理学","https://www.icourse163.org/course/0711BNU0144-1470417183","进阶","公开课","发展、学习与研究方法","系统学习学生发展、学习理论、动机、教学设计、测评和课堂情境。"),
   r("MIT 9.85 Infant and Early Childhood Cognition","https://ocw.mit.edu/courses/9-85-infant-and-early-childhood-cognition-fall-2012/","高级","公开课","发展心理学、统计与实验设计","从认知发展实验出发理解知识、因果推断、语言和学习，并练习把证据转化为研究提案。")
  ]),
  organizational:t("组织心理学与人因","研究人员选拔、绩效、领导、团队、组织文化、工作健康，以及人与技术系统如何安全协作。",[
-  r("OpenStax Psychology 2e: Industrial-Organizational Psychology",`${openStax}13-introduction`,"入门","开放教材","心理学导论","概览工业、组织、职业健康与人因心理学的主要问题。"),
+  r("OpenStax Psychology 2e: Industrial-Organizational Psychology","https://openstax.org/books/psychology-2e/pages/13-introduction","入门","开放教材","心理学导论","概览工业、组织、职业健康与人因心理学的主要问题。"),
   r("MIT 15.301 Managerial Psychology","https://ocw.mit.edu/courses/15-301-managerial-psychology-fall-2006/","进阶","公开课","社会心理学与研究方法","通过行为研究、案例和写作学习团队、谈判、冲突、领导与组织分析。"),
   r("MIT 15.301 Managerial Psychology Laboratory","https://ocw.mit.edu/courses/15-301-managerial-psychology-laboratory-fall-2004/","高级","公开课","统计、问卷与实验设计","完成从问题、伦理、调查到现场实验和研究论文的应用心理项目。")
  ]),
@@ -149,7 +148,7 @@ export const psychology:SubjectConfig={
   ["MIT","MIT OCW Brain and Cognitive Sciences","https://ocw.mit.edu/search/?d=Brain%20and%20Cognitive%20Sciences","认知、神经、计算、发展和实验课程。"],
   ["Yale","Open Yale Psychology","https://oyc.yale.edu/psychology","完整心理学导论课程。"],
   ["Noba","Noba Project","https://nobaproject.com/","由各领域学者编写的免费心理学模块。"],
-  ["Neuromatch","Neuromatch Academy","https://neuromatch.io/academy/","开放计算神经科学课程、教程和代码。"],
+  ["Neuromatch","Neuromatch Computational Neuroscience","https://compneuro.neuromatch.io/","开放计算神经科学课程、教程和代码。"],
   ["APA","APA Research and Practice","https://www.apa.org/research-practice","研究规范、开放科学、测量和实践指南。"]
  ]
 };

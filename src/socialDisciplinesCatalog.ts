@@ -13,7 +13,7 @@ const politicalTopics:Record<string,Topic>={
  theory:t("政治思想与政治理论","讨论正义、自由、平等、权威、公民身份和理想制度，并训练规范论证。",[
   r("Yale PLSC 114: Introduction to Political Philosophy","https://oyc.yale.edu/political-science/plsc-114","入门","公开课","无需前置","通过柏拉图、霍布斯、洛克、卢梭和托克维尔进入西方政治思想。"),
   r("Harvard Justice","https://justiceharvard.org/","进阶","公开课","基础哲学阅读","围绕功利主义、权利、公平与公共选择练习规范推理。"),
-  r("Stanford Encyclopedia of Philosophy: Political Philosophy","https://plato.stanford.edu/entries/political-philosophy/","高级","开放教材","政治哲学与学术英文","用同行评审条目梳理概念争论和进一步阅读。")
+  r("Stanford Encyclopedia of Philosophy: Political Authority","https://plato.stanford.edu/entries/authority/","高级","开放教材","政治哲学与学术英文","以权威、合法性和服从义务为中心，用同行评审条目梳理政治哲学争论与进一步阅读。")
  ]),
  comparative:t("比较政治","比较国家、政体、政党、选举、社会运动以及民主化与国家能力。",[
   r("MIT 17.50 Introduction to Comparative Politics","https://ocw.mit.edu/courses/17-50-introduction-to-comparative-politics-fall-2022/","入门","公开课","政治学导论","比较经济、文化和制度如何塑造不同国家的政治结果。"),

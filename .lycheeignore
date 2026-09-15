@@ -10,3 +10,14 @@
 ^https://web\.mit\.edu/
 ^https://www\.allaboutcircuits\.com/
 ^https://www\.europeana\.eu/
+^https://fbsbook\.org/$
+^https://fred\.stlouisfed\.org(?:/.*)?$
+^https://freesound\.org/$
+^https://learnenglish\.britishcouncil\.org(?:/.*)?$
+^https://sam\.nrel\.gov/$
+^https://www\.njude\.com\.cn/jingpin2008/gdhy/kcms-2\.htm$
+^https://www\.nrel\.gov/materials-science/materials-synthesis-characterization\.html$
+^https://web\.eecs\.umich\.edu/~justincj/teaching/eecs498/WI2022/$
+^https://www\.analog\.com/en/resources/design-tools-and-calculators/ltspice-simulator\.html$
+^https://www\.art\.yale\.edu/courses/art114$
+^https://www\.compadre\.org/osp/$

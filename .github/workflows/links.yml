@@ -6,6 +6,7 @@ on:
       - "src/**"
       - "**.md"
       - ".lycheeignore"
+      - "lychee.toml"
       - ".github/workflows/links.yml"
   schedule:
     - cron: "17 3 * * 1"
@@ -28,9 +29,7 @@ jobs:
         with:
           args: >-
             --no-progress
-            --max-retries 3
-            --retry-wait-time 2
-            --timeout 30
+            --config lychee.toml
             README.md CONTRIBUTING.md CONTENT_LICENSE.md TRADEMARKS.md
             docs/**/*.md src/**/*.ts src/**/*.tsx
           fail: true

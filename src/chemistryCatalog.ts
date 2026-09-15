@@ -76,7 +76,7 @@ const topics:Record<string,Topic>={
   r("Open Reaction Database","https://docs.open-reaction-database.org/en/latest/","高级","项目平台","有机化学、数据工程与机器学习","用开放反应数据研究反应预测、合成规划和实验设计。")
  ]),
  research:t("实验、安全与开放科学","学习风险评估、实验设计、质量控制、数据管理、复现与科学写作。",[
-  r("ACS Guidelines for Chemical Laboratory Safety","https://www.acs.org/education/policies/safety.html","入门","公开讲义","无需前置","建立风险识别、个人防护、废物处置和应急意识。"),
+  r("ACS Guidelines for Chemical Laboratory Safety","https://institute.acs.org/acs-center/lab-safety/education-training/college-univ-guidelines/laboratory-safety-for-chemistry-students-etextbook.html","入门","公开讲义","无需前置","建立风险识别、个人防护、废物处置和应急意识。"),
   r("MIT 5.310 Laboratory Chemistry","https://ocw.mit.edu/courses/5-310-laboratory-chemistry-fall-2019/","进阶","公开课","核心化学；实验须有合规条件","从操作、仪器和数据处理进入规范的研究记录与报告。"),
   r("NIST Chemistry WebBook","https://webbook.nist.gov/chemistry/","高级","项目平台","分析、物化与数据处理","用标准参考数据验证计算或实验结果并追踪来源。")
  ]),
@@ -107,7 +107,7 @@ export const chemistry:SubjectConfig={
   ["结构与权威数据",[["PubChem","https://pubchem.ncbi.nlm.nih.gov/","查询化合物结构、性质和安全信息"],["NIST Chemistry WebBook","https://webbook.nist.gov/chemistry/","检索标准光谱和热化学数据"],["IUPAC Gold Book","https://goldbook.iupac.org/","核对化学术语与定义"],["Ketcher","https://lifescience.opensource.epam.com/ketcher/index.html","在浏览器中绘制结构和反应"]]],
   ["分子与材料计算",[["Avogadro","https://avogadro.cc/","开源分子建模与可视化"],["MolView","https://molview.org/","在线查看分子三维结构"],["Psi4","https://psicode.org/","开源量子化学计算"],["Materials Project","https://next-gen.materialsproject.org/","检索和分析计算材料数据"]]],
   ["数据与自动化",[["Python","https://www.python.org/","分析实验和计算数据"],["Jupyter","https://jupyter.org/","整合代码、图表和说明"],["RDKit","https://www.rdkit.org/","进行化学信息学与分子机器学习"],["GitHub","https://github.com/","保存代码、数据处理与版本历史"]]],
-  ["文献、安全与记录",[["Google Scholar","https://scholar.google.com/","检索化学研究"],["Zotero","https://www.zotero.org/","管理论文和引用"],["ACS Laboratory Safety","https://www.acs.org/education/policies/safety.html","查阅实验室安全教育资料"],["PubChem Safety","https://pubchem.ncbi.nlm.nih.gov/","检查化学品危害和处理信息"]]]
+  ["文献、安全与记录",[["Google Scholar","https://scholar.google.com/","检索化学研究"],["Zotero","https://www.zotero.org/","管理论文和引用"],["ACS Laboratory Safety","https://institute.acs.org/acs-center/lab-safety/education-training/college-univ-guidelines/laboratory-safety-for-chemistry-students-etextbook.html","查阅实验室安全教育资料"],["PubChem Safety","https://pubchem.ncbi.nlm.nih.gov/","检查化学品危害和处理信息"]]]
  ],
  books:[
   ["OpenStax Chemistry 2e","https://openstax.org/details/books/chemistry-2e","普通化学 · 入门","完整免费两学期教材，适合作为第一套主教材。"],

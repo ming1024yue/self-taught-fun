@@ -53,7 +53,7 @@ const competitionGroups:CompetitionGroup[]=[
   {name:"Blue Ocean Student Entrepreneur Competition",url:"https://blueoceancompetition.org/",access:"全球高中生，可个人或组队",cadence:"每年一次",format:"提交 5 分钟视频路演",cost:"免费",result:"公开路演作品、评审与奖项",note:"全程虚拟，对只有早期创意、还没有正式公司的学生也友好。"}
  ]},
  {id:"games",title:"游戏设计与创作",en:"GAME DESIGN",description:"在明确主题和期限内完成可玩的作品，比只学习引擎和教程更能说明能力。",items:[
-  {name:"GMTK Game Jam",url:"https://itch.io/jams/hosted-by/gmtk",access:"不限国家、年龄和经验",cadence:"每年一次",format:"个人或团队在线限时开发",cost:"公开加入",result:"可玩游戏、玩家评分与作品页",note:"规模大、反馈多；评分关注创意、体验、叙事、美术和音频。"},
+  {name:"GMTK Game Jam",url:"https://gmtk.itch.io/",access:"不限国家、年龄和经验",cadence:"每年一次",format:"个人或团队在线限时开发",cost:"公开加入",result:"可玩游戏、玩家评分与作品页",note:"规模大、反馈多；评分关注创意、体验、叙事、美术和音频。"},
   {name:"GitHub Game Off",url:"https://github.blog/tag/github-game-off/",access:"全球个人或团队",cadence:"通常每年 11 月",format:"在线开发并通过 GitHub、itch.io 提交",cost:"免费账号即可",result:"公开仓库、可玩作品与社区评分",note:"适合把代码、版本历史、说明文档和成品放在一起展示。"},
   {name:"js13kGames",url:"https://js13kgames.com/",access:"面向 Web 游戏开发者",cadence:"每年 8–9 月",format:"在线提交不超过 13KB 的网页游戏",cost:"免费参赛",result:"可玩作品、源代码与评审排名",note:"强约束会迫使参赛者理解浏览器、性能、压缩和游戏机制设计。"},
   {name:"itch.io Game Jams",url:"https://itch.io/jams",access:"各 Jam 规则不同",cadence:"全年持续更新",format:"在线比赛目录",cost:"多数免费",result:"作品页、社区反馈与排名",note:"它是赛事平台而非单一比赛；优先选择主办方清楚、规则完整、参与人数稳定的 Jam。"}

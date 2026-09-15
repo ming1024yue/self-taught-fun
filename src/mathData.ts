@@ -115,7 +115,7 @@ export const mathTopics:Record<string,MathTopic>={
  ]},
  "network-science":{title:"网络科学",intro:"用图、概率和动力系统研究连接结构，以及传播、鲁棒性和集体现象。",resources:[
   R("Network Science — Albert-László Barabási","https://networksciencebook.com/","入门","开放教材","概率、线性代数与基础编程","免费在线教材从随机网络、无标度结构进入社区、传播和网络鲁棒性。"),
-  R("MIT 6.268 Network Science and Models","https://ocw.mit.edu/courses/6-268-network-science-and-models-fall-2014/","进阶","公开课","概率、图论与微积分","研究随机图、网络形成、级联、流行病传播、学习和社会网络。"),
+  R("MIT 1.022 Introduction to Network Models","https://ocw.mit.edu/courses/1-022-introduction-to-network-models-fall-2018/","进阶","公开课","概率、图论与微积分","研究网络流、中心性、随机图、级联与流行病传播，并通过项目分析真实网络。"),
   R("Santa Fe Institute Complexity Explorer","https://www.complexityexplorer.org/courses","高级","课程库","概率、动力系统与编程","通过复杂系统课程把网络、涌现、信息和多主体模型连接起来。")
  ]},
  "math-ml":{title:"机器学习的数学",intro:"从线性代数、概率、优化与统计学习理论理解模型为何有效、何时失效。",resources:[
