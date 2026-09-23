@@ -1,0 +1,42 @@
+.paper-home-original-layout{min-height:100vh;background-color:var(--paper);background-image:radial-gradient(circle at 1px 1px,rgba(24,24,24,.085) 1px,transparent 1.25px),linear-gradient(94deg,rgba(255,255,255,.24),transparent 38%,rgba(24,24,24,.025) 67%,transparent);background-size:14px 14px,100% 100%;color:var(--ink)}
+.paper-home-original-layout .platform-header{border-bottom:2px solid var(--ink);background:rgba(248,247,241,.93);box-shadow:none;color:var(--ink);backdrop-filter:blur(11px)}
+.paper-home-original-layout .brand-logo{color:var(--ink);filter:none;transform:rotate(-4deg)}
+.paper-home-original-layout .platform-brand b{font-family:"Kaiti SC",STKaiti,"Marker Felt","Comic Sans MS",cursive;font-size:16px}
+.paper-home-original-layout .subject-menu>button,.paper-home-original-layout .platform-simple-link{color:var(--ink);font-weight:700}
+.paper-home-original-layout .subject-menu>button:after,.paper-home-original-layout .platform-simple-link:after{position:absolute;right:11px;bottom:5px;left:11px;height:5px;border-radius:50%;background:var(--yellow);content:"";opacity:0;transform:rotate(-2deg);transition:opacity .18s;z-index:-1}
+.paper-home-original-layout .subject-menu:hover>button:after,.paper-home-original-layout .subject-menu.open>button:after,.paper-home-original-layout .platform-simple-link:hover:after{opacity:.78}
+.paper-home-original-layout .subject-menu-panel,.paper-home-original-layout .mobile-subject-panel{border:2px solid var(--ink);border-radius:5px 11px 6px 9px;background:var(--paper);box-shadow:6px 7px 0 var(--ink)}
+.paper-home-original-layout .subject-menu-panel a:hover,.paper-home-original-layout .mobile-subject-panel a:hover{background:rgba(245,216,92,.34)}
+.paper-home-original-layout :is(.language-toggle,.course-search-trigger){border:1.5px solid transparent;color:var(--ink)}
+.paper-home-original-layout :is(.language-toggle,.course-search-trigger):hover{border-color:var(--ink);background:#fff}
+.paper-home-original-layout .platform-main{background:transparent}
+.paper-home-original-layout .platform-hero>small,.paper-home-original-layout .knowledge-heading small,.paper-home-original-layout .platform-contact>small{color:var(--ink);font-weight:900}
+.paper-home-original-layout .platform-hero h1{position:relative;color:var(--ink);font-family:"Kaiti SC",STKaiti,"Marker Felt","Comic Sans MS",cursive;font-weight:700}
+.paper-home-original-layout .platform-hero h1:after{position:absolute;bottom:-13px;left:0;width:min(480px,68%);height:13px;border-radius:50%;background:var(--yellow);content:"";opacity:.85;transform:rotate(-1deg)}
+.paper-home-original-layout .platform-hero p{color:#3f3e3a;font-family:"Kaiti SC",STKaiti,Lato,sans-serif}
+.paper-home-original-layout .knowledge-section{position:relative;border:0;background:rgba(255,255,255,.32)}
+.paper-home-original-layout .knowledge-section:before,.paper-home-original-layout .knowledge-section:after{position:absolute;right:0;left:0;border-top:2px dashed var(--ink);content:""}
+.paper-home-original-layout .knowledge-section:before{top:0}.paper-home-original-layout .knowledge-section:after{bottom:0}
+.paper-home-original-layout .knowledge-heading h2,.paper-home-original-layout .platform-about h2{font-family:"Kaiti SC",STKaiti,"Marker Felt","Comic Sans MS",cursive;font-weight:700}
+.paper-home-original-layout .knowledge-heading p,.paper-home-original-layout .graph-note{color:#595853}
+.paper-home-original-layout .graph-shell{border:1px solid var(--ink);border-radius:5px 13px 6px 10px;background-color:rgba(255,255,255,.68);background-image:radial-gradient(rgba(24,24,24,.12) 1px,transparent 1px);background-size:15px 15px;box-shadow:8px 9px 0 var(--ink)}
+.paper-home-original-layout .graph-zoom{border:1.5px solid var(--ink);background:rgba(248,247,241,.82);color:var(--ink)}
+.paper-home-original-layout .graph-tooltip{border:2px solid var(--ink);border-radius:11px 11px 3px 11px;background:rgba(255,255,255,.94);box-shadow:3px 4px 0 rgba(24,24,24,.18)}
+.paper-home-original-layout .graph-shell:after{border:1px solid var(--ink);background:rgba(248,247,241,.9);color:#55524c}
+.paper-home-original-layout .graph-legend i{outline:1px solid var(--ink);outline-offset:1px}
+.paper-home-original-layout .platform-about{position:relative;border:0}
+.paper-home-original-layout .platform-about:after{position:absolute;right:0;bottom:0;left:0;border-top:2px dashed var(--ink);content:""}
+.paper-home-original-layout .platform-about h2{border-color:var(--ink)}
+.paper-home-original-layout .platform-vision{color:var(--ink);font-family:"Kaiti SC",STKaiti,"Marker Felt","Comic Sans MS",cursive}
+.paper-home-original-layout .platform-about>div>p{border-radius:5px 10px 5px 12px;background:rgba(255,255,255,.8);box-shadow:inset 0 0 0 2px var(--ink),5px 6px 0 rgba(24,24,24,.14);color:#56544e}
+.paper-home-original-layout .platform-about>div>p:nth-child(2){transform:rotate(.35deg)}
+.paper-home-original-layout .platform-about>div>p b{color:var(--ink);font-family:"Kaiti SC",STKaiti,sans-serif}
+.paper-home-original-layout .platform-contact{border-top:0}
+.paper-home-original-layout .platform-contact p{color:#45443f;font-family:"Kaiti SC",STKaiti,Lato,sans-serif}
+.paper-home-original-layout .platform-contact a{border-bottom:5px solid var(--yellow);color:var(--ink)}
+:root[data-theme="dark"] .paper-home-original-layout{background-color:var(--paper);color:var(--ink)}
+:root[data-theme="dark"] .paper-home-original-layout .platform-header{border-color:var(--ink);background:rgba(248,247,241,.94);color:var(--ink)}
+:root[data-theme="dark"] .paper-home-original-layout :is(.platform-main,.knowledge-section,.platform-about){background-color:transparent;color:var(--ink)}
+:root[data-theme="dark"] .paper-home-original-layout .platform-about>div>p{background:rgba(255,255,255,.8);color:#56544e}
+@media(max-width:1120px){.paper-home-original-layout .platform-header{background:rgba(248,247,241,.96)}.paper-home-original-layout .mobile-subject-panel{box-shadow:0 6px 0 var(--ink)}}
+@media(max-width:720px){.paper-home-original-layout .platform-brand b{font-size:14px}.paper-home-original-layout .platform-hero h1:after{height:9px}.paper-home-original-layout .graph-shell{box-shadow:5px 6px 0 var(--ink)}}

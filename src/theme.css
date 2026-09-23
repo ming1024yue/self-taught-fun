@@ -1,4 +1,7 @@
 :root {
+  --window-radius: 24px;
+  --popover-radius: 16px;
+  --control-radius: 12px;
   --header-bg: rgba(245, 245, 247, .88);
   --surface: #fff;
   --surface-soft: #efeff2;
@@ -41,8 +44,8 @@ body,header,.sidebar,.platform,.platform-main,.platform-about,.knowledge-section
 }
 
 .header-controls { display: flex; flex: 0 0 auto; align-items: center; gap: 2px; }
-.theme-toggle,
-.language-toggle {
+.language-toggle,
+.course-search-trigger {
   display: grid;
   flex: 0 0 34px;
   width: 34px;
@@ -59,23 +62,9 @@ body,header,.sidebar,.platform,.platform-main,.platform-about,.knowledge-section
 }
 
 .language-toggle { font: 600 10px/1 -apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif; letter-spacing: .04em; }
-.theme-toggle:hover { background: var(--cream-deep); transform: rotate(12deg); }
 .language-toggle:hover { background: var(--cream-deep); }
-.theme-toggle:focus-visible,
-.language-toggle:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; }
-.theme-toggle-icon {
-  position: relative;
-  display: block;
-  width: 16px;
-  height: 16px;
-  overflow: hidden;
-  border: 1.4px solid currentColor;
-  border-radius: 50%;
-  transform: rotate(-35deg);
-  transition: transform .28s ease;
-}
-.theme-toggle-icon::after { position: absolute; inset: -1px -1px -1px 50%; background: currentColor; content: ""; }
-:root[data-theme="dark"] .theme-toggle-icon { transform: rotate(145deg); }
+.language-toggle:focus-visible,
+.course-search-trigger:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; }
 
 :root[data-theme="dark"] body { background: var(--cream); color: var(--ink); }
 :root[data-theme="dark"] header { border-color: var(--line); background: var(--header-bg); }
@@ -205,7 +194,7 @@ body,header,.sidebar,.platform,.platform-main,.platform-about,.knowledge-section
   }
   :root[data-language="en"] .platform-brand-row {
     align-self: stretch;
-    padding: 0 96px 0 18px;
+    padding: 0 132px 0 18px;
   }
   :root[data-language="en"] .platform-brand {
     display: flex;
@@ -276,11 +265,11 @@ body,header,.sidebar,.platform,.platform-main,.platform-about,.knowledge-section
 }
 
 @media (max-width: 1120px) {
-  .platform-brand-row { padding-right: 96px; }
+  .platform-brand-row { padding-right: 94px; }
   .platform-header > .header-controls { position: absolute; z-index: 13; top: calc(5px + env(safe-area-inset-top, 0px)); right: 17px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   body,header,.sidebar,.platform,.platform-main,.platform-about,.knowledge-section,.opportunity-page,
-  .subject-card,.card,.course-portals article,.curriculum-grid article,.comments-pending,.education-notice,.theme-toggle,.language-toggle,.theme-toggle-icon { transition: none; }
+  .subject-card,.card,.course-portals article,.curriculum-grid article,.comments-pending,.education-notice,.language-toggle,.course-search-trigger { transition: none; }
 }

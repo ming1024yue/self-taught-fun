@@ -1,7 +1,7 @@
 import {useEffect,useRef,useState} from "react";
 import BrandLogo from "./BrandLogo";
+import CourseSearch from "./CourseSearch";
 import LanguageToggle from "./LanguageToggle";
-import ThemeToggle from "./ThemeToggle";
 import {categoryLabel,pick,subjectLabel,useLanguage} from "./i18n";
 import {subjectCategories,type SubjectCategory} from "./subjectNavigation";
 
@@ -31,10 +31,11 @@ export default function GlobalHeader({sidebarLabel}:{sidebarLabel?:string}){
      <button type="button" aria-expanded={openCategory===category.name} onClick={()=>setOpenCategory(current=>current===category.name?null:category.name)}>{english?categoryLabel(category.name):category.name}<i aria-hidden="true"/></button>
      <div className="subject-menu-panel"><MenuItems category={category} onSelect={closeCategory}/></div>
     </div>)}
+    <a className="platform-simple-link" href={`${base}calendar/`} onClick={closeCategory}>{pick(language,"时间表","Schedule")}</a>
     <a className="platform-simple-link" href={`${base}opportunities/`} onClick={closeCategory}>{pick(language,"比赛和资质","Competitions & Credentials")}</a>
     <a className="platform-simple-link" href={`${base}#about`} onClick={closeCategory}>{pick(language,"关于","About")}</a>
    </nav>
-   <div className="header-controls"><LanguageToggle/><ThemeToggle/></div>
+   <div className="header-controls"><CourseSearch onOpen={closeCategory}/><LanguageToggle/></div>
    {active&&<div className="mobile-subject-panel"><strong>{english?categoryLabel(active.name):active.name}</strong><MenuItems category={active} onSelect={closeCategory}/></div>}
   </header>
   {sidebarLabel&&<button className="mobile-overlay" aria-label={english?`Close ${subjectLabel(sidebarLabel,sidebarLabel)} contents`:`关闭${sidebarLabel}目录`} onClick={closeSidebar}/>}

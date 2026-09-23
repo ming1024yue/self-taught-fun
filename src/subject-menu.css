@@ -16,7 +16,7 @@
 .subject-menu.open > button i { margin-top: 3px; transform: rotate(225deg); }
 .subject-menu-panel {
   position: absolute; top: calc(100% + 8px); left: 50%; width: 238px;
-  padding: 10px; border: 1px solid rgba(37,34,34,.1); border-radius: 14px;
+  padding: 10px; border: 1px solid rgba(37,34,34,.1); border-radius: var(--popover-radius);
   background: rgba(245,245,247,.97); box-shadow: 0 18px 45px rgba(37,34,34,.12);
   backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
   opacity: 0; visibility: hidden; pointer-events: none;
@@ -59,7 +59,7 @@
   .mobile-subject-panel {
     display: grid; position: absolute; z-index: 12; top: calc(100px + env(safe-area-inset-top,0px));
     left: 12px; right: 12px; padding: 12px;
-    border: 1px solid rgba(37,34,34,.1); border-radius: 14px;
+    border: 1px solid rgba(37,34,34,.1); border-radius: var(--popover-radius);
     background: rgba(245,245,247,.98); box-shadow: 0 18px 50px rgba(37,34,34,.15);
     backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
   }
