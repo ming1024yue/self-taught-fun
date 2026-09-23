@@ -188,7 +188,7 @@ body,header,.sidebar,.platform,.platform-main,.platform-about,.knowledge-section
 :root[data-theme="dark"] .mobile-overlay { background: rgba(0, 0, 0, .54); }
 
 :root[data-language="en"] .graph-shell::after {
-  content: "Drag nodes to rearrange · Drag empty space to pan";
+  content: "Click to open · Drag nodes to rearrange";
 }
 
 /* English category names need more room than their Chinese counterparts.
