@@ -23,8 +23,6 @@ const totalLabel=(phases:readonly TimelinePhase[],english=false)=>{
 
 export default function LearningTimeline({phases}:{phases:readonly TimelinePhase[]}){
  const {language}=useLanguage(),english=language==="en";
- const hasOngoing=phases.some(phase=>phase.mode==="ongoing"||phase.time.includes("持续"));
- const hasChoice=phases.some(phase=>phase.mode==="choice");
  return <section className="learning-timeline" aria-label={pick(language,"目标：完成相当于本科专业教育的系统训练，能够继续学习前沿领域，并应用所学","Goal: complete an undergraduate-equivalent core, continue into current fields, and apply what you learn")}>
   <header className="timeline-heading">
    <h3>{pick(language,"本科核心","Undergraduate core")} <span>→</span> {pick(language,"前沿","Frontiers")} <span>→</span> {pick(language,"应用","Application")}</h3>
@@ -38,6 +36,5 @@ export default function LearningTimeline({phases}:{phases:readonly TimelinePhase
     </li>)}
    </ol>
   </div>
-  {(hasChoice||hasOngoing)&&<p className="timeline-note">{english?<>{hasChoice&&"Total time includes one elective direction"}{hasChoice&&hasOngoing&&"; "}{hasOngoing&&"ongoing practice is not counted twice"}.</>:<>{hasChoice&&"总时长按一条选修方向计算"}{hasChoice&&hasOngoing&&"；"}{hasOngoing&&"实践贯穿学习过程，不重复计时"}。</>}</p>}
  </section>;
 }

@@ -1,5 +1,5 @@
 import {useEffect,useRef,useState} from "react";
-import {pick,subjectLabel,topicLabel,useLanguage} from "./i18n";
+import {pick,topicLabel,useLanguage} from "./i18n";
 type Node={id:string;label:string;group:string;x:number;y:number;size:number};
 type View={x:number;y:number;scale:number};
 const colors:Record<string,string>={数学:"#8794ad",计算机:"#789b96",经济学:"#aa9474",金融:"#78977f",物理:"#9187a5",化学:"#9a8f78",生物:"#7f9b86",心理学:"#a58c9d",社会科学:"#a28f7c",历史:"#9b8875",工程学:"#8d8379",运动科学:"#77958c",营养学:"#a29072",艺术:"#a7837d",设计:"#788d9c",音乐:"#91839d",语言:"#8f829d",文学:"#9d7f86",交叉领域:"#505860"};
@@ -77,13 +77,11 @@ export default function KnowledgeGraph(){
  const finish=(e:React.PointerEvent<HTMLCanvasElement>)=>{const drag=dragRef.current;clearLongPress();dragRef.current=null;e.currentTarget.classList.remove("dragging-node","touch-dragging","panning");if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);if(e.type==="pointerup"&&drag?.kind==="node"&&!drag.moved&&!drag.longPressed){const path=nodeRoutes[drag.id];if(path)window.location.assign(`${import.meta.env.BASE_URL}${path}`)}};
  const changeZoom=(value:number)=>{const canvas=canvasRef.current;if(!canvas)return;const r=canvas.getBoundingClientRect(),v=viewRef.current,next=value/100,ratio=next/v.scale,cx=r.width/2,cy=r.height/2;v.x=cx-(cx-v.x)*ratio;v.y=cy-(cy-v.y)*ratio;v.scale=next;setZoom(value);drawRef.current()};
  return <section className="knowledge-section" id="knowledge-graph">
-  <div className="knowledge-heading"><small>KNOWLEDGE GRAPH</small><h2>{pick(language,"知识不是孤立的章节","Knowledge is connected")}</h2><p>{pick(language,"每个点代表一个知识，线表示真实的知识依赖或方法交汇。高阶领域通常位于多个基础学科之间。","Each node represents a field of knowledge; each line marks a real dependency or methodological connection. Advanced fields often sit between several foundations.")}</p></div>
+  <div className="knowledge-heading"><small>KNOWLEDGE GRAPH</small><h2>{pick(language,"知识不是孤立的章节","Knowledge is connected")}</h2></div>
   <div className="graph-shell">
    <canvas ref={canvasRef} onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={finish} onPointerCancel={finish} onPointerLeave={e=>{if(!dragRef.current){activate(null);e.currentTarget.classList.remove("dragging-node","touch-dragging","panning")}}} role="img" aria-label={pick(language,"可单击进入内容、可拖拽调整的跨学科知识图谱","An interdisciplinary graph whose nodes can be opened with a click or rearranged by dragging")}/>
    <label className="graph-zoom"><span>{pick(language,"缩放","Zoom")}</span><input type="range" min="70" max="220" step="5" value={zoom} onChange={e=>changeZoom(Number(e.currentTarget.value))} aria-label={pick(language,"调整知识图谱缩放比例","Adjust knowledge graph zoom")}/><output>{zoom}%</output></label>
    <div className="graph-tooltip" aria-live="polite">{active?<><b>{english?topicLabel(active.id,active.label):active.label}</b><span>{english?"Tap to open · Long-press to rearrange":`${descriptions[active.id]??active.group} · 轻触进入`}</span></>:<><b>{pick(language,"探索知识图谱","Explore the graph")}</b><span>{pick(language,"轻触进入 · 触屏长按后拖动","Tap to open · Long-press and drag on touchscreens")}</span></>}</div>
   </div>
-  <div className="graph-legend">{Object.entries(colors).map(([name,color])=><span key={name}><i style={{background:color}}/>{english?subjectLabel(name,name):name}</span>)}</div>
-  <p className="graph-note">{pick(language,"图中只展示本站已有学习内容；轻触节点进入对应内容，触屏长按后可拖动。直接上下滑动仍会正常滚动页面。","The graph only includes learning content currently available on this site. Tap a node to open it, or long-press before dragging on a touchscreen. A normal vertical swipe continues to scroll the page.")}</p>
  </section>
 }

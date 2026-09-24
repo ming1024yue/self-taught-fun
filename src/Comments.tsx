@@ -38,7 +38,7 @@ export default function Comments({discussionKey}:{discussionKey:string}){
   return()=>{observer.disconnect();window.removeEventListener("site-theme-change",syncTheme);target.replaceChildren()};
  },[discussionKey,language]);
  return <section className="comments-section" aria-labelledby="comments-title">
-  <div className="comments-heading"><small>COMMUNITY</small><h2 id="comments-title">{pick(language,"留言与讨论","Comments & Discussion")}</h2><p>{pick(language,"分享学习心得、补充资源或提出问题。留言由 GitHub Discussions 保存，登录 GitHub 后即可留言和回复。","Share what you learned, suggest a resource, or ask a question. Comments are stored in GitHub Discussions; sign in with GitHub to post and reply.")}</p></div>
+  <div className="comments-heading"><small>COMMUNITY</small><h2 id="comments-title">{pick(language,"留言与讨论","Comments & Discussion")}</h2></div>
   {categoryId?<div className="giscus" ref={container}/>:<div className="comments-pending"><b>{pick(language,"留言区等待连接 GitHub Discussions","Comments are waiting for GitHub Discussions")}</b><p>{pick(language,"站点结构已经就绪；仓库完成 Discussions 与 giscus 配置后，留言框会自动出现在这里。","The page is ready. The comment box will appear after Discussions and giscus are configured for the repository.")}</p></div>}
  </section>;
 }

@@ -17,8 +17,9 @@
   --pk-green:#b8cdbb;
   --pk-edge-shadow:#d8d7d1;
   --pk-shadow:#e2e1dc;
-  --pk-hand:"Marker Felt","Comic Sans MS","Kaiti SC",STKaiti,cursive;
-  --pk-ui:ui-rounded,"SF Pro Rounded",Lato,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  --pk-font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+  --pk-hand:var(--pk-font);
+  --pk-ui:var(--pk-font);
   --cream:var(--pk-paper);
   --cream-deep:var(--pk-paper-deep);
   --ink:var(--pk-ink);
@@ -61,7 +62,7 @@
   color-scheme:dark;
 }
 
-html{background:var(--pk-paper)}
+html{background:var(--pk-paper);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 body{
   background-color:var(--pk-paper)!important;
   background-image:
@@ -71,6 +72,7 @@ body{
   color:var(--pk-ink)!important;
   font-family:var(--pk-ui)!important;
 }
+#root,#root *{font-family:var(--pk-font)!important}
 body::selection{background:var(--pk-yellow);color:#171615}
 .shell,.platform,.platform-main,.platform-about,.knowledge-section,.opportunity-page,.calendar-page{background:transparent!important}
 
@@ -107,6 +109,27 @@ h1,h2,h3,.platform-vision,.subject-card h3,.card h3,.calendar-summary strong,.op
   color:var(--pk-muted)!important;
 }
 h2{border-bottom:1px dashed color-mix(in srgb,var(--pk-ink) 42%,transparent)}
+.shell main>section#how>p{display:none}
+.shell main>section#plan>.plan-intro{display:none}
+.plan-steps .phase-goal{display:none}
+.weekly{display:none}
+.platform-hero>p,
+.shell main>.hero>p,
+.shell main>.hero>aside,
+.shell main>section#plan>.beginner-note,
+.section-note,
+.topic-curriculum>p,
+.tool-sections>section>p,
+.opportunity-hero>p,
+.opportunity-detail-hero>p,
+.opportunity-detail-hero>aside,
+.opportunity-heading>p,
+.group-heading>p,
+.path-note,
+.calendar-hero p,
+.calendar-summary>p,
+.course-search-start>p{display:none!important}
+.calendar-summary{grid-template-columns:repeat(3,minmax(0,1fr))!important}
 
 /* Homepage planner note: a tactile shortcut from discovering paths to planning time. */
 .platform-hero{position:relative}
@@ -328,8 +351,7 @@ header,.platform-header{
 
 /* Knowledge graph keeps its interaction and receives a drafting-sheet surface. */
 .knowledge-section{position:relative;border:0!important}
-.knowledge-section::before,.knowledge-section::after{position:absolute;right:0;left:0;border-top:2px dashed var(--pk-ink);content:""}
-.knowledge-section::before{top:0}.knowledge-section::after{bottom:0}
+.knowledge-section::before,.knowledge-section::after{content:none!important}
 .graph-shell{
   border:2px solid var(--pk-ink)!important;
   border-radius:5px 13px 6px 10px!important;
