@@ -350,7 +350,11 @@ header,.platform-header{
 .comments-section{border-top:2px dashed var(--pk-ink)!important}
 
 /* Knowledge graph keeps its interaction and receives a drafting-sheet surface. */
-.knowledge-section{position:relative;border:0!important}
+.knowledge-section{
+  position:relative;
+  margin-top:clamp(150px,22vh,260px)!important;
+  border:0!important;
+}
 .knowledge-section::before,.knowledge-section::after{content:none!important}
 .graph-shell{
   border:2px solid var(--pk-ink)!important;
@@ -393,7 +397,27 @@ header,.platform-header{
   color:var(--pk-ink);
 }
 .path-chooser>a:nth-child(2){transform:rotate(.25deg)}
-.path-chooser>a:hover{background:var(--pk-ink)!important;color:var(--pk-paper)!important;transform:translate(-2px,-3px)}
+.path-chooser h2{
+  width:max-content;
+  max-width:100%;
+  background-image:linear-gradient(var(--pk-yellow),var(--pk-yellow));
+  background-position:0 92%;
+  background-repeat:no-repeat;
+  background-size:0 10px;
+  transition:background-size .22s ease;
+}
+.path-chooser>a:hover,
+.path-chooser>a:focus-visible{
+  background:var(--pk-card)!important;
+  color:var(--pk-ink)!important;
+  box-shadow:11px 12px 0 var(--pk-edge-shadow);
+  transform:translate(-2px,-3px);
+}
+.path-chooser>a:hover h2,
+.path-chooser>a:focus-visible h2{background-size:100% 10px}
+.path-chooser>a:hover span,
+.path-chooser>a:focus-visible span{color:var(--pk-muted)!important}
+.path-chooser>a:focus-visible{outline:3px solid var(--pk-blue);outline-offset:5px}
 .proof-guide{gap:12px}
 .proof-guide>div{border:2px solid var(--pk-ink)!important;border-radius:5px 10px 6px 12px;background:var(--pk-card)}
 .proof-guide>div+div{border-left:2px solid var(--pk-ink)!important}
@@ -503,7 +527,7 @@ header,.platform-header{
   --cal-muted:var(--pk-muted);
 }
 
-@media(max-width:1120px){
+@media(max-width:1450px){
   .platform-header{background:color-mix(in srgb,var(--pk-paper) 96%,transparent)!important}
   .mobile-subject-panel{box-shadow:0 6px 0 var(--pk-edge-shadow)!important}
 }
@@ -542,10 +566,285 @@ header,.platform-header{
 .calendar-course-confirm{box-shadow:0 8px 22px color-mix(in srgb,var(--pk-edge-shadow) 72%,transparent)!important}
 .education-notice{box-shadow:0 3px 14px color-mix(in srgb,var(--pk-edge-shadow) 72%,transparent)!important}
 
-@media(max-width:1120px){
+@media(max-width:1450px){
   .paper-home-original-layout .mobile-subject-panel{box-shadow:0 6px 0 var(--pk-shadow)!important}
 }
 
 @media(max-width:720px){
   .paper-home-original-layout .graph-shell{box-shadow:5px 6px 0 var(--pk-shadow)!important}
+}
+
+/* Readability scale: keep the existing hierarchy while making the whole site
+   easier to scan on desktop and mobile. */
+body{font-size:18px!important;line-height:1.7}
+
+.platform-brand b{font-size:18px!important}
+.platform-nav>a,
+.platform-simple-link,
+.subject-menu>button{font-size:14px!important}
+.subject-menu-panel>a,
+.subject-menu-panel>.subject-coming,
+.mobile-subject-panel>a,
+.mobile-subject-panel>.subject-coming{font-size:15px!important}
+.subject-menu-panel small,
+.mobile-subject-panel small{font-size:10px!important}
+.mobile-subject-panel>strong,
+.language-toggle{font-size:11px!important}
+
+.sidebar h3{font-size:12px!important}
+.sidebar a,
+.sidebar .sidebar-curriculum a{font-size:17px!important;line-height:1.55}
+
+.hero>p,
+.platform-hero>p,
+.platform-about p,
+.platform-contact p,
+.section-note,
+.knowledge-heading p,
+.opportunity-hero>p,
+.opportunity-detail-hero>p,
+.calendar-hero p{font-size:18px!important}
+
+.card h3,
+.course-portals h3,
+.curriculum-grid h3{font-size:23px!important}
+.card p,
+.card dd,
+.tool-list p,
+.tool-list li,
+.library-list p,
+.course-portals p,
+.curriculum-grid p,
+.plan-steps dd,
+.comments-pending,
+.opportunity-card p{font-size:17px!important;line-height:1.7}
+.card small,
+.card dt,
+.library-list small,
+.course-portals span,
+.phase-meta small,
+.opportunity-card-head,
+.opportunity-card dt{font-size:12px!important}
+
+.timeline-heading h3{font-size:20px!important}
+.timeline-heading strong{font-size:16px!important}
+.timeline-heading span,
+.timeline-node,
+.timeline-scroll li small,
+.timeline-note{font-size:10px!important}
+.timeline-scroll li b{font-size:12px!important}
+.phase-meta b,
+.plan-steps dt{font-size:13px!important}
+.plan-steps h3{font-size:21px!important}
+.plan-steps a{font-size:14px!important}
+
+.opportunity-heading>small,
+.group-heading small,
+.opportunity-card-head{font-size:11px!important}
+.anchor-list a{font-size:13px!important}
+.opportunity-card h3{font-size:25px!important}
+
+.course-search-heading small{font-size:10px!important}
+.course-search-input input{font-size:18px!important}
+.course-search-start button{font-size:14px!important}
+.course-search-count{font-size:12px!important}
+.course-search-meta{font-size:11px!important}
+.course-search-list strong{font-size:19px!important}
+.course-search-list p{font-size:14px!important}
+
+.calendar-hero small,
+.calendar-workspace-heading small,
+.calendar-editor>header small{font-size:11px!important}
+.calendar-summary small,
+.calendar-field>span,
+.calendar-kind-legend,
+.calendar-course-picker>label{font-size:12px!important}
+.calendar-field input,
+.calendar-field select,
+.calendar-field textarea{font-size:16px!important}
+.calendar-day-options span{font-size:13px!important}
+.calendar-time-head,
+.calendar-time-axis time,
+.calendar-day-head>time,
+.calendar-day-head>small{font-size:10px!important}
+.calendar-day-head>span{font-size:14px!important}
+.calendar-course small{font-size:10px!important}
+.calendar-course strong{font-size:14px!important;line-height:1.35}
+.calendar-course>span{font-size:11px!important}
+.calendar-repeat-mode b{font-size:14px!important}
+.calendar-repeat-mode small{font-size:11px!important}
+.calendar-course-options>button>span,
+.calendar-course-selected{font-size:11px!important}
+.calendar-course-options>button strong{font-size:14px!important}
+.calendar-course-options>p,
+.calendar-week-navigation button{font-size:12px!important}
+.calendar-course-confirm span,
+.calendar-course-confirm button{font-size:10px!important}
+.calendar-mobile-days button>span{font-size:13px!important}
+.calendar-mobile-days time{font-size:10px!important}
+
+.graph-zoom,
+.graph-tooltip,
+.graph-shell::after{font-size:11px!important}
+.education-notice{font-size:11px!important}
+
+@media(max-width:1740px){
+  :root[data-language="en"] .subject-menu>button,
+  :root[data-language="en"] .platform-simple-link{font-size:14px!important}
+}
+
+@media(max-width:1450px){
+  .subject-menu>button,
+  .platform-simple-link{font-size:14px!important}
+  .platform-brand b{font-size:16px!important}
+}
+
+@media(max-width:620px){
+  body{font-size:17px!important}
+  .sidebar a,
+  .sidebar .sidebar-curriculum a{font-size:16px!important}
+  .card p,
+  .card dd,
+  .tool-list p,
+  .tool-list li,
+  .library-list p,
+  .course-portals p,
+  .curriculum-grid p,
+  .plan-steps dd,
+  .comments-pending,
+  .opportunity-card p{font-size:16px!important}
+}
+
+/* Large displays need a larger optical scale and denser use of the viewport.
+   Fixed pixel sizes that work on a laptop otherwise look miniature on 2K/3K screens. */
+@media(min-width:1800px){
+  body{font-size:20px!important}
+
+  .platform-header{height:84px!important;padding-inline:clamp(44px,3vw,90px)!important}
+  .platform-header{gap:clamp(22px,1.6vw,44px)!important}
+  .platform-brand b{font-size:21px!important}
+  .platform-nav{gap:clamp(5px,.7vw,20px)!important}
+  .platform-nav>a,
+  .platform-simple-link,
+  .subject-menu>button{font-size:16px!important;padding:10px clamp(10px,.7vw,18px)!important}
+  .subject-menu-panel{width:290px!important;padding:13px!important}
+  .subject-menu-panel>a,
+  .subject-menu-panel>.subject-coming{font-size:17px!important;padding:12px 13px!important}
+  .subject-menu-panel small{font-size:12px!important}
+  .header-controls{gap:8px!important}
+  .language-toggle,
+  .course-search-trigger{width:40px!important;height:40px!important;flex-basis:40px!important}
+  .language-toggle{font-size:13px!important}
+
+  .platform-main{padding:120px clamp(70px,6vw,178px) 80px!important}
+  .platform-main>section{max-width:1540px!important}
+  .platform-hero{
+    min-height:0!important;
+    padding:clamp(70px,6vh,92px) 450px clamp(82px,7vh,112px) 0!important;
+  }
+  .platform-hero>small,
+  .knowledge-heading small,
+  .platform-contact>small{font-size:13px!important}
+  .platform-hero h1{max-width:1100px!important;font-size:clamp(78px,3.35vw,100px)!important;line-height:1.04!important}
+  .home-planner-note{width:390px!important;min-height:310px!important;padding:50px 40px 35px!important}
+  .home-planner-note small{font-size:12px!important}
+  .home-planner-note strong{font-size:39px!important;line-height:1.3!important}
+  .home-planner-note span{font-size:16px!important}
+  .home-planner-note span b{font-size:22px!important}
+
+  .knowledge-section{
+    margin-top:clamp(360px,31vh,460px)!important;
+    padding:78px clamp(70px,6vw,178px)!important;
+  }
+  .knowledge-section>*{max-width:1540px!important}
+  .knowledge-heading h2{font-size:44px!important}
+  .graph-shell canvas{height:680px!important}
+  .graph-zoom,
+  .graph-tooltip,
+  .graph-shell::after{font-size:13px!important}
+  .platform-about{padding-top:72px!important}
+  .platform-vision{max-width:1100px!important;font-size:44px!important}
+  .platform-about>div>p{padding:28px 30px!important;font-size:19px!important}
+  .platform-contact{padding-top:78px!important}
+  .platform-contact p{max-width:920px!important;font-size:19px!important}
+
+  .shell{--side:330px}
+  .sidebar{inset:84px auto 0 0!important;width:330px!important;padding:36px 30px!important}
+  .sidebar h3{font-size:14px!important}
+  .sidebar a,
+  .sidebar .sidebar-curriculum a{font-size:19px!important;padding-block:7px!important}
+  .shell main{margin-left:330px!important;padding:150px clamp(80px,8vw,220px) 80px!important}
+  .shell main>section{max-width:1100px!important;padding-bottom:48px!important}
+  .hero small{font-size:13px!important}
+  .hero h1{font-size:clamp(64px,2.7vw,80px)!important}
+  h2{font-size:36px!important}
+  .legend b{font-size:16px!important}
+  .legend small{font-size:13px!important}
+  .legend>div{padding:20px 22px!important}
+  .card{padding:32px!important;gap:19px!important}
+  .card h3,
+  .course-portals h3,
+  .curriculum-grid h3{font-size:27px!important}
+  .card p,
+  .card dd,
+  .tool-list p,
+  .tool-list li,
+  .library-list p,
+  .course-portals p,
+  .curriculum-grid p,
+  .plan-steps dd,
+  .comments-pending,
+  .opportunity-card p{font-size:19px!important}
+  .card small,
+  .card dt,
+  .library-list small,
+  .course-portals span,
+  .phase-meta small,
+  .opportunity-card dt{font-size:14px!important}
+  .plan-steps h3{font-size:26px!important}
+  .plan-steps a{font-size:17px!important}
+
+  .opportunity-main{padding:140px clamp(70px,6vw,178px) 90px!important}
+  .opportunity-main>section{max-width:1540px!important}
+  .opportunity-hero,
+  .opportunity-landing .opportunity-hero{min-height:0!important;padding:76px 0 88px!important}
+  .opportunity-hero h1{font-size:clamp(76px,3.2vw,96px)!important}
+  .opportunity-card h3{font-size:31px!important}
+  .anchor-list a{font-size:16px!important}
+
+  .calendar-main{padding:145px clamp(60px,5vw,148px) 90px!important}
+  .calendar-main>section{max-width:1900px!important}
+  .calendar-hero{padding:48px 0 58px!important}
+  .calendar-hero h1{max-width:1120px!important;font-size:clamp(80px,3.4vw,102px)!important}
+  .calendar-hero small,
+  .calendar-workspace-heading small{font-size:13px!important}
+  .calendar-primary,.calendar-save{min-height:52px!important;padding-inline:23px!important;font-size:16px!important}
+  .calendar-summary>div{min-height:116px!important;padding:22px 27px!important}
+  .calendar-summary small{font-size:14px!important}
+  .calendar-summary strong{font-size:35px!important}
+  .calendar-workspace-heading h2{font-size:42px!important}
+  .calendar-day-head>span{font-size:16px!important}
+  .calendar-day-head>time,
+  .calendar-day-head>small,
+  .calendar-time-head,
+  .calendar-time-axis time{font-size:12px!important}
+  .calendar-course small{font-size:11px!important}
+  .calendar-course strong{font-size:16px!important}
+  .calendar-course>span{font-size:13px!important}
+  .calendar-week-navigation button{font-size:14px!important;min-height:44px!important}
+
+  .course-search-dialog{width:min(980px,calc(100vw - 80px))!important}
+  .course-search-heading{padding:32px 36px 22px!important}
+  .course-search-heading small{font-size:12px!important}
+  .course-search-heading h2{font-size:38px!important}
+  .course-search-input{margin-inline:36px!important;padding:16px 18px!important}
+  .course-search-input input{font-size:20px!important}
+  .course-search-start{padding:28px 36px 34px!important}
+  .course-search-start button{font-size:16px!important;padding:10px 17px!important}
+  .course-search-results{padding:24px 36px 36px!important}
+  .course-search-count{font-size:14px!important}
+  .course-search-meta{font-size:13px!important}
+  .course-search-list strong{font-size:23px!important}
+  .course-search-list p{font-size:16px!important}
+  .education-notice{max-width:440px!important;font-size:13px!important;padding:10px 14px!important}
 }

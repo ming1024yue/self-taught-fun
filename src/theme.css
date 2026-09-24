@@ -264,7 +264,7 @@ body,header,.sidebar,.platform,.platform-main,.platform-about,.knowledge-section
   :root[data-language="en"] .sidebar { inset: calc(100px + env(safe-area-inset-top, 0px)) auto 0; }
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 1450px) {
   .platform-brand-row { padding-right: 94px; }
   .platform-header > .header-controls { position: absolute; z-index: 13; top: calc(5px + env(safe-area-inset-top, 0px)); right: 17px; }
 }

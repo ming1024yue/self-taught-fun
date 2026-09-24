@@ -50,7 +50,7 @@
 .mobile-subject-panel > .subject-coming { color: #85847f; cursor: default; }
 .mobile-subject-panel { display: none; }
 
-@media (max-width: 1120px) {
+@media (max-width: 1450px) {
   .platform-header { overflow: visible !important; }
   .platform-nav .subject-menu { flex: 0 0 auto; }
   .subject-menu > button { padding: 8px 11px; font-size: 11px; }

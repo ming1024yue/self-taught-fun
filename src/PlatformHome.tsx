@@ -14,7 +14,7 @@ export default function PlatformHome(){
     <p>{pick(language,"本站希望减少优质教育资源与学习者之间的信息差。我们按照知识依赖关系，整理公开课、教材、论文、工具与实践项目，帮助零基础学习者逐步建立完整的知识体系。","We reduce the distance between learners and excellent educational resources. Open courses, textbooks, papers, tools, and projects are organized by knowledge dependencies so that beginners can build a complete foundation step by step.")}</p>
     <a className="home-planner-note" href={`${base}calendar/`} aria-label={pick(language,"打开时间表，开始规划课程","Open the schedule and start planning courses")}>
      <small>{pick(language,"开始规划","START PLANNING")}</small>
-     <strong>{pick(language,"把想学的课程，安排进自己的时间。","Put the courses you want to learn into your own schedule.")}</strong>
+     <strong>{pick(language,"把想学的内容，安排进自己的时间。","Put the courses you want to learn into your own schedule.")}</strong>
      <span>{pick(language,"打开时间表","Open schedule")} <b aria-hidden="true">→</b></span>
     </a>
    </section>

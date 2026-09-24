@@ -95,8 +95,8 @@ function VerificationNote({kind}:{kind:"赛事"|"考试"}){const{language}=useLa
 export default function OpportunitiesPage(){const{language}=useLanguage();return <div className="opportunity-page"><PageHeader/><main className="opportunity-main opportunity-landing">
  <section className="opportunity-hero"><small>COMPETITIONS & CREDENTIALS</small><h1>{pick(language,"比赛和资质","Competitions & Credentials")}</h1><p>{pick(language,"选择一种方式，把学习成果变成可以被看见、被验证的能力证明。","Choose a way to turn learning into visible, verifiable evidence of capability.")}</p></section>
  <section className="path-chooser" aria-label={pick(language,"选择验证路径","Choose a verification path")}>
-  <a href={`${base}opportunities/competitions/`}><small>01 / COMPETITIONS</small><div><h2>{pick(language,"比赛","Competitions")}</h2><span>{pick(language,"用公开题目、排名和作品检验应用能力。","Test applied ability through open problems, rankings, and completed work.")}</span></div><b>{pick(language,"进入比赛目录","Open competition directory")}</b></a>
-  <a href={`${base}opportunities/credentials/`}><small>02 / CREDENTIALS</small><div><h2>{pick(language,"资质","Credentials")}</h2><span>{pick(language,"用规范考试和职业认证证明专业能力。","Demonstrate professional knowledge through structured exams and certifications.")}</span></div><b>{pick(language,"进入资质目录","Open credential directory")}</b></a>
+  <a href={`${base}opportunities/competitions/`}><small>01 / COMPETITIONS</small><div><h2>{pick(language,"比赛","Competitions")}</h2><span>{pick(language,"用公开题目、排名和作品检验应用能力。","Test applied ability through open problems, rankings, and completed work.")}</span></div></a>
+  <a href={`${base}opportunities/credentials/`}><small>02 / CREDENTIALS</small><div><h2>{pick(language,"资质","Credentials")}</h2><span>{pick(language,"用规范考试和职业认证证明专业能力。","Demonstrate professional knowledge through structured exams and certifications.")}</span></div></a>
  </section>
  <section className="path-note"><p>{pick(language,"比赛和证书都不是学习的终点。选择与你的目标直接相关、规则透明，并能留下可验证成果的一条路径即可。","Neither a competition nor a certificate is the end of learning. Choose one transparent path that matches your goal and leaves verifiable evidence.")}</p></section>
  </main></div>}
