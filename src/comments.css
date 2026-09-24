@@ -1,10 +1,13 @@
-.comments-section{max-width:800px;margin:0 auto 60px;padding:50px 0 0;border-top:1px solid rgba(32,33,36,.1)}
-.comments-heading{margin-bottom:28px}
-.comments-heading small{letter-spacing:.17em;color:#747b84}
-.comments-heading h2{margin:8px 0 10px;border:0;padding:0}
+.comments-section{max-width:1050px;margin:0 auto 88px;padding:68px 0 0;border-top:1px solid rgba(32,33,36,.1)}
+.comments-heading{margin-bottom:38px}
+.comments-heading small{font-size:13px;letter-spacing:.17em;color:#747b84}
+.comments-heading h2{margin:10px 0 14px;border:0;padding:0;font-size:38px;line-height:1.2}
 .comments-heading p,.comments-pending p{margin:0;color:var(--muted)}
-.comments-pending{padding:22px 24px;border-radius:10px;background:rgba(255,255,255,.46);border:1px solid rgba(32,33,36,.08)}
-.comments-pending b{display:block;margin-bottom:5px;font-size:14px}
-.giscus,.giscus-frame{width:100%}
-.learning-comments{margin-left:var(--side);padding:0 8vw}
-@media(max-width:800px){.learning-comments{margin-left:0;padding:0 22px}.comments-section{padding-top:36px;margin-bottom:36px}.comments-pending{padding:18px}}
+.comments-pending{padding:30px 32px;border-radius:10px;background:rgba(255,255,255,.46);border:1px solid rgba(32,33,36,.08)}
+.comments-pending b{display:block;margin-bottom:7px;font-size:17px}
+.giscus{width:100%;overflow:visible}
+.giscus-frame{width:100%;zoom:1.12}
+.learning-comments{margin-left:270px;padding:0 clamp(24px,3vw,48px)}
+@media(min-width:1100px) and (max-width:1799px){.learning-comments{margin-left:300px;padding-inline:clamp(28px,3vw,64px)}}
+@media(min-width:1800px){.learning-comments{margin-left:380px;padding-inline:clamp(64px,4vw,118px)}.comments-section{max-width:1400px;padding-top:86px;margin-bottom:110px}.comments-heading{margin-bottom:48px}.comments-heading small{font-size:16px}.comments-heading h2{font-size:50px}.comments-pending{padding:38px 40px}.comments-pending b{font-size:21px}.giscus-frame{zoom:1.16}}
+@media(max-width:800px){.learning-comments{margin-left:0;padding:0 24px}.comments-section{padding-top:46px;margin-bottom:48px}.comments-heading{margin-bottom:28px}.comments-heading small{font-size:12px}.comments-heading h2{font-size:32px}.comments-pending{padding:22px}.comments-pending b{font-size:16px}.giscus-frame{zoom:1.06}}

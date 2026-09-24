@@ -206,8 +206,9 @@ header,.platform-header{
   color:var(--pk-ink)!important;
   backdrop-filter:blur(12px)!important;
 }
-.brand-logo{color:var(--pk-ink)!important;filter:none!important;transform:rotate(-5deg)}
-.platform-brand b{font-family:var(--pk-hand);font-size:16px;font-weight:700}
+.platform-header{height:80px!important}
+.brand-logo{width:28px!important;height:28px!important;color:var(--pk-ink)!important;filter:none!important;transform:rotate(-5deg)}
+.platform-brand b{font-family:var(--pk-hand);font-size:20px;font-weight:700}
 .platform-nav a,.subject-menu>button{color:var(--pk-ink);font-family:var(--pk-ui);font-weight:750}
 .platform-nav a:hover,.subject-menu:hover>button,.subject-menu:focus-within>button,.subject-menu.open>button{
   border-radius:5px 9px 6px 10px!important;
@@ -225,8 +226,11 @@ header,.platform-header{
 .subject-menu-panel>a,.mobile-subject-panel>a{border-radius:4px 8px 5px 9px!important;color:var(--pk-ink)!important}
 .subject-menu-panel>a:hover,.mobile-subject-panel>a:hover{background:color-mix(in srgb,var(--pk-yellow) 48%,transparent)!important;color:var(--pk-ink)!important}
 .subject-menu-panel small,.mobile-subject-panel small{color:var(--pk-muted)!important}
-.header-controls{gap:4px}
+.header-controls{gap:6px}
 .language-toggle,.course-search-trigger{
+  width:38px!important;
+  height:38px!important;
+  flex-basis:38px!important;
   border:1.5px solid transparent!important;
   border-radius:48% 52% 46% 54%!important;
   background:transparent!important;
@@ -578,14 +582,14 @@ header,.platform-header{
    easier to scan on desktop and mobile. */
 body{font-size:18px!important;line-height:1.7}
 
-.platform-brand b{font-size:18px!important}
+.platform-brand b{font-size:20px!important}
 .platform-nav>a,
 .platform-simple-link,
-.subject-menu>button{font-size:14px!important}
+.subject-menu>button{font-size:15px!important}
 .subject-menu-panel>a,
 .subject-menu-panel>.subject-coming,
 .mobile-subject-panel>a,
-.mobile-subject-panel>.subject-coming{font-size:15px!important}
+.mobile-subject-panel>.subject-coming{font-size:16px!important}
 .subject-menu-panel small,
 .mobile-subject-panel small{font-size:10px!important}
 .mobile-subject-panel>strong,
@@ -685,18 +689,42 @@ body{font-size:18px!important;line-height:1.7}
 
 .graph-zoom,
 .graph-tooltip,
-.graph-shell::after{font-size:11px!important}
+.graph-shell::after{font-size:12px!important}
 .education-notice{font-size:11px!important}
 
 @media(max-width:1740px){
+  :root[data-language="en"] .platform-header{
+    height:calc(112px + env(safe-area-inset-top,0px))!important;
+    grid-template-rows:50px 62px!important;
+  }
+  :root[data-language="en"] .platform-main{padding-top:calc(152px + env(safe-area-inset-top,0px))!important}
+  :root[data-language="en"] .sidebar{inset:calc(112px + env(safe-area-inset-top,0px)) auto 0!important}
+  :root[data-language="en"] .mobile-subject-panel{top:calc(112px + env(safe-area-inset-top,0px))!important}
   :root[data-language="en"] .subject-menu>button,
-  :root[data-language="en"] .platform-simple-link{font-size:14px!important}
+  :root[data-language="en"] .platform-simple-link{font-size:15px!important}
 }
 
 @media(max-width:1450px){
+  .platform-header{
+    height:calc(112px + env(safe-area-inset-top,0px))!important;
+    grid-template-rows:50px 62px!important;
+  }
+  .platform-brand-row{padding-inline:22px 110px!important}
+  .platform-nav{padding:9px 16px 13px!important;gap:4px!important}
   .subject-menu>button,
-  .platform-simple-link{font-size:14px!important}
-  .platform-brand b{font-size:16px!important}
+  .platform-simple-link{font-size:15px!important;padding:9px 13px!important}
+  .platform-brand b{font-size:18px!important}
+  .brand-logo{width:27px!important;height:27px!important}
+  .platform-header>.header-controls{top:calc(6px + env(safe-area-inset-top,0px))!important;right:20px!important}
+  .mobile-subject-panel{top:calc(112px + env(safe-area-inset-top,0px))!important}
+  .platform-main{padding-top:calc(152px + env(safe-area-inset-top,0px))!important}
+  .sidebar{inset:calc(112px + env(safe-area-inset-top,0px)) auto 0!important}
+  .platform .knowledge-section,
+  .platform-about{scroll-margin-top:calc(124px + env(safe-area-inset-top,0px))!important}
+}
+
+@media(max-width:800px){
+  :root{--mobile-header:calc(112px + env(safe-area-inset-top,0px))}
 }
 
 @media(max-width:620px){
@@ -720,21 +748,22 @@ body{font-size:18px!important;line-height:1.7}
 @media(min-width:1800px){
   body{font-size:20px!important}
 
-  .platform-header{height:84px!important;padding-inline:clamp(44px,3vw,90px)!important}
+  .platform-header{height:96px!important;padding-inline:clamp(48px,3.2vw,98px)!important}
   .platform-header{gap:clamp(22px,1.6vw,44px)!important}
-  .platform-brand b{font-size:21px!important}
+  .brand-logo{width:32px!important;height:32px!important}
+  .platform-brand b{font-size:24px!important}
   .platform-nav{gap:clamp(5px,.7vw,20px)!important}
   .platform-nav>a,
   .platform-simple-link,
-  .subject-menu>button{font-size:16px!important;padding:10px clamp(10px,.7vw,18px)!important}
+  .subject-menu>button{font-size:18px!important;padding:12px clamp(12px,.75vw,20px)!important}
   .subject-menu-panel{width:290px!important;padding:13px!important}
   .subject-menu-panel>a,
   .subject-menu-panel>.subject-coming{font-size:17px!important;padding:12px 13px!important}
   .subject-menu-panel small{font-size:12px!important}
   .header-controls{gap:8px!important}
   .language-toggle,
-  .course-search-trigger{width:40px!important;height:40px!important;flex-basis:40px!important}
-  .language-toggle{font-size:13px!important}
+  .course-search-trigger{width:44px!important;height:44px!important;flex-basis:44px!important}
+  .language-toggle{font-size:14px!important}
 
   .platform-main{padding:120px clamp(70px,6vw,178px) 80px!important}
   .platform-main>section{max-width:1540px!important}
@@ -757,11 +786,12 @@ body{font-size:18px!important;line-height:1.7}
     padding:78px clamp(70px,6vw,178px)!important;
   }
   .knowledge-section>*{max-width:1540px!important}
-  .knowledge-heading h2{font-size:44px!important}
-  .graph-shell canvas{height:680px!important}
+  .knowledge-heading h2{font-size:52px!important}
+  .graph-shell{margin-top:48px!important}
+  .graph-shell canvas{height:820px!important}
   .graph-zoom,
   .graph-tooltip,
-  .graph-shell::after{font-size:13px!important}
+  .graph-shell::after{font-size:14px!important}
   .platform-about{padding-top:72px!important}
   .platform-vision{max-width:1100px!important;font-size:44px!important}
   .platform-about>div>p{padding:28px 30px!important;font-size:19px!important}
@@ -769,7 +799,7 @@ body{font-size:18px!important;line-height:1.7}
   .platform-contact p{max-width:920px!important;font-size:19px!important}
 
   .shell{--side:330px}
-  .sidebar{inset:84px auto 0 0!important;width:330px!important;padding:36px 30px!important}
+  .sidebar{inset:96px auto 0 0!important;width:330px!important;padding:36px 30px!important}
   .sidebar h3{font-size:14px!important}
   .sidebar a,
   .sidebar .sidebar-curriculum a{font-size:19px!important;padding-block:7px!important}
@@ -847,4 +877,99 @@ body{font-size:18px!important;line-height:1.7}
   .course-search-list strong{font-size:23px!important}
   .course-search-list p{font-size:16px!important}
   .education-notice{max-width:440px!important;font-size:13px!important;padding:10px 14px!important}
+}
+
+/* Subject pages use a wider reading column and a larger teaching scale than
+   utility pages. This keeps curricula and resources substantial on every screen. */
+@media(min-width:801px){
+  .shell main>section{max-width:1000px!important;padding-bottom:64px!important}
+  .shell .tool-sections{max-width:1000px!important;margin-inline:auto!important}
+  .shell .hero small{font-size:12px!important}
+  .shell .hero h1{font-size:clamp(50px,4.6vw,72px)!important;line-height:1.06!important}
+  .shell h2{font-size:34px!important}
+  .shell .sidebar h3{font-size:13px!important}
+  .shell .sidebar a,
+  .shell .sidebar .sidebar-curriculum a{font-size:18px!important;padding-block:6px!important}
+  .shell .legend>div{padding:18px 20px!important}
+  .shell .legend b{font-size:15px!important}
+  .shell .legend small{font-size:12px!important}
+  .shell .card{padding:29px!important;gap:18px!important}
+  .shell .card h3,
+  .shell .course-portals h3,
+  .shell .curriculum-grid h3{font-size:25px!important}
+  .shell .card p,
+  .shell .card dd,
+  .shell .tool-list p,
+  .shell .tool-list li,
+  .shell .library-list p,
+  .shell .course-portals p,
+  .shell .curriculum-grid p,
+  .shell .plan-steps dd{font-size:18px!important}
+  .shell .card small,
+  .shell .card dt,
+  .shell .library-list small,
+  .shell .course-portals span,
+  .shell .phase-meta small{font-size:13px!important}
+  .shell .plan-steps h3{font-size:24px!important}
+  .shell .plan-steps a{font-size:16px!important}
+}
+
+@media(min-width:1100px) and (max-width:1799px){
+  .shell{--side:300px}
+  .shell>.sidebar{width:300px!important;padding-inline:27px!important}
+  .shell>main{margin-left:300px!important;padding:150px clamp(50px,6vw,115px) 90px!important}
+}
+
+@media(min-width:1800px){
+  .shell{--side:380px}
+  .shell>.sidebar{width:380px!important;padding:42px 36px!important}
+  .shell>main{margin-left:380px!important;padding:176px clamp(92px,6.8vw,210px) 100px!important}
+  .shell main>section,
+  .shell .tool-sections{max-width:1400px!important}
+  .shell .hero small{font-size:15px!important}
+  .shell .hero h1{font-size:clamp(88px,3.5vw,108px)!important}
+  .shell h2{font-size:46px!important}
+  .shell .sidebar h3{font-size:16px!important}
+  .shell .sidebar a,
+  .shell .sidebar .sidebar-curriculum a{font-size:22px!important;padding-block:8px!important}
+  .shell .legend>div{padding:25px 28px!important}
+  .shell .legend b{font-size:19px!important}
+  .shell .legend small{font-size:15px!important}
+  .shell .card{padding:38px!important;gap:23px!important}
+  .shell .card h3,
+  .shell .course-portals h3,
+  .shell .curriculum-grid h3{font-size:33px!important}
+  .shell .card p,
+  .shell .card dd,
+  .shell .tool-list p,
+  .shell .tool-list li,
+  .shell .library-list p,
+  .shell .course-portals p,
+  .shell .curriculum-grid p,
+  .shell .plan-steps dd{font-size:21px!important}
+  .shell .card small,
+  .shell .card dt,
+  .shell .library-list small,
+  .shell .course-portals span,
+  .shell .phase-meta small{font-size:16px!important}
+  .shell .plan-steps h3{font-size:31px!important}
+  .shell .plan-steps a{font-size:19px!important}
+}
+
+@media(max-width:800px){
+  .shell>main{padding-inline:24px!important}
+  .shell .hero h1{font-size:clamp(43px,11vw,54px)!important}
+  .shell h2{font-size:32px!important}
+  .shell .card{padding:25px 22px!important}
+  .shell .card h3,
+  .shell .course-portals h3,
+  .shell .curriculum-grid h3{font-size:24px!important}
+  .shell .card p,
+  .shell .card dd,
+  .shell .tool-list p,
+  .shell .tool-list li,
+  .shell .library-list p,
+  .shell .course-portals p,
+  .shell .curriculum-grid p,
+  .shell .plan-steps dd{font-size:17px!important}
 }
