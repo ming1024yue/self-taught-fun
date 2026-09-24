@@ -76,3 +76,18 @@
 .calendar-course-confirm button:hover{background:var(--cream-deep);color:var(--ink)}
 .calendar-course-confirm button:first-of-type:hover{background:#8f362d;color:#fff}
 @media(max-width:760px),(hover:none){.calendar-course-delete{opacity:1;transform:scale(1)}}
+
+/* Browse any week while keeping the timetable focused on seven days. */
+.calendar-week-navigation{display:flex;align-items:center;gap:7px}
+.calendar-week-navigation button{display:inline-flex;min-height:38px;padding:0 13px;border:1px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);font-size:11px;font-weight:700;align-items:center;justify-content:center;gap:7px;cursor:pointer;transition:background .16s,color .16s,transform .16s}
+.calendar-week-navigation button:hover{transform:translateY(-1px);background:var(--cream-deep)}
+.calendar-week-navigation button[aria-current="date"]{background:var(--ink);color:var(--cream)}
+.calendar-week-navigation span{font-size:15px;font-weight:500;line-height:1}
+@media(max-width:760px){.calendar-workspace-heading{align-items:flex-start;flex-direction:column;gap:14px}.calendar-week-navigation{width:100%}.calendar-week-navigation button{flex:1}.calendar-week-navigation button:first-child{justify-content:flex-start}.calendar-week-navigation button:last-child{justify-content:flex-end}}
+
+/* Every saved schedule gets its own stable color; block type remains the fallback. */
+.calendar-course.kind-course{border-color:var(--course-line,var(--cal-course-line));background:var(--course-bg,var(--cal-course-bg));color:var(--course-text,var(--cal-course-text))}
+.calendar-course.kind-practice{border-color:var(--course-line,var(--cal-practice-line));background:var(--course-bg,var(--cal-practice-bg));color:var(--course-text,var(--cal-practice-text))}
+.calendar-course.kind-reading{border-color:var(--course-line,var(--cal-reading-line));background:var(--course-bg,var(--cal-reading-bg));color:var(--course-text,var(--cal-reading-text))}
+.calendar-course.kind-project{border-color:var(--course-line,var(--cal-project-line));background:var(--course-bg,var(--cal-project-bg));color:var(--course-text,var(--cal-project-text))}
+.calendar-course.kind-review{border-color:var(--course-line,var(--cal-review-line));background:var(--course-bg,var(--cal-review-bg));color:var(--course-text,var(--cal-review-text))}
