@@ -14,14 +14,14 @@ function MenuItems({category,onSelect}:{category:SubjectCategory;onSelect:()=>vo
 
 export default function GlobalHeader({sidebarLabel}:{sidebarLabel?:string}){
  const {language}=useLanguage(),english=language==="en";
- const [openCategory,setOpenCategory]=useState<string|null>(null),headerRef=useRef<HTMLElement>(null);
- useEffect(()=>{const close=(event:PointerEvent)=>{if(!headerRef.current?.contains(event.target as Node))setOpenCategory(null)},escape=(event:KeyboardEvent)=>{if(event.key==="Escape")setOpenCategory(null)};document.addEventListener("pointerdown",close);document.addEventListener("keydown",escape);return()=>{document.removeEventListener("pointerdown",close);document.removeEventListener("keydown",escape);document.body.classList.remove("menu-open")}},[]);
+ const [openCategory,setOpenCategory]=useState<string|null>(null),[scrolled,setScrolled]=useState(()=>window.scrollY>16),headerRef=useRef<HTMLElement>(null);
+ useEffect(()=>{const close=(event:PointerEvent)=>{if(!headerRef.current?.contains(event.target as Node))setOpenCategory(null)},escape=(event:KeyboardEvent)=>{if(event.key==="Escape")setOpenCategory(null)},syncScroll=()=>setScrolled(window.scrollY>16);document.addEventListener("pointerdown",close);document.addEventListener("keydown",escape);window.addEventListener("scroll",syncScroll,{passive:true});syncScroll();return()=>{document.removeEventListener("pointerdown",close);document.removeEventListener("keydown",escape);window.removeEventListener("scroll",syncScroll);document.body.classList.remove("menu-open")}},[]);
  const active=subjectCategories.find(category=>category.name===openCategory);
  const closeSidebar=()=>document.body.classList.remove("menu-open");
  const toggleSidebar=(button:HTMLButtonElement)=>{const open=document.body.classList.toggle("menu-open");button.setAttribute("aria-expanded",String(open))};
  const closeCategory=()=>setOpenCategory(null);
  return <>
-  <header className={`platform-header${sidebarLabel?" subject-global-header":""}`} ref={headerRef}>
+  <header className={`platform-header${sidebarLabel?" subject-global-header":""}${scrolled?" is-scrolled":""}`} ref={headerRef}>
    <div className="platform-brand-row">
     {sidebarLabel&&<button className="menu-button" aria-label={english?`Open ${subjectLabel(sidebarLabel,sidebarLabel)} contents`:`打开${sidebarLabel}目录`} aria-expanded="false" onClick={event=>toggleSidebar(event.currentTarget)}><span/><span/><span/></button>}
     <a className="platform-brand" href={base} aria-label={pick(language,"自学坊首页","Self-Taught Fun home")}><BrandLogo/><b>{pick(language,"自学坊","Self-Taught Fun")}</b></a>

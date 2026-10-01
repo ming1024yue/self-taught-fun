@@ -973,3 +973,48 @@ body{font-size:18px!important;line-height:1.7}
   .shell .curriculum-grid p,
   .shell .plan-steps dd{font-size:17px!important}
 }
+
+/* Transparent floating navigation, following the DeepSeek Harness pattern:
+   invisible at the top, then a quiet glass surface once content scrolls below it. */
+.platform-header{
+  border-bottom:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  isolation:isolate;
+}
+.platform-header::before{
+  position:absolute;
+  z-index:-1;
+  inset:8px 16px 0;
+  border:1px solid transparent;
+  border-radius:999px;
+  background:transparent;
+  box-shadow:none;
+  content:"";
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s ease,background-color .35s ease,border-color .35s ease,box-shadow .35s ease;
+}
+.platform-header.is-scrolled::before{
+  border-color:color-mix(in srgb,var(--pk-ink) 14%,transparent);
+  background:color-mix(in srgb,var(--pk-paper) 76%,transparent);
+  box-shadow:0 10px 34px color-mix(in srgb,var(--pk-ink) 8%,transparent);
+  opacity:1;
+  backdrop-filter:blur(18px) saturate(125%);
+  -webkit-backdrop-filter:blur(18px) saturate(125%);
+}
+
+@media(max-width:1450px){
+  .platform-header{background:transparent!important}
+  .platform-header::before{inset:7px 10px 0;border-radius:24px}
+}
+
+@media(max-width:620px){
+  .platform-header::before{inset:5px 7px 0;border-radius:20px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .platform-header::before{transition:none}
+}
