@@ -377,6 +377,32 @@ header,.platform-header{
 }
 .graph-legend i{outline:1px solid var(--pk-ink);outline-offset:1px}
 
+/* Open-source invitation. */
+.github-invite{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:420px;
+  margin-top:80px;
+  padding:72px 32px!important;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+  text-align:center;
+}
+.platform-main .github-invite h2{margin:0;padding:0;border:0;color:var(--pk-ink);font-size:clamp(36px,4.5vw,72px)!important;line-height:1.15}
+.github-invite p{margin:24px 0 40px;color:var(--pk-muted);font-size:clamp(18px,1.7vw,25px);line-height:1.6}
+.github-invite-link{display:inline-flex;align-items:center;justify-content:center;gap:14px;max-width:100%;padding:19px 38px;border-radius:999px;background:#fff;color:#111214;font-size:22px;font-weight:650;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+.github-invite-link svg{width:28px;height:28px;flex-shrink:0}
+.github-invite-link:hover{transform:translateY(-3px);box-shadow:0 7px 0 #aeb0b5}
+.github-invite-link:focus-visible{outline:3px solid var(--pk-yellow);outline-offset:6px}
+@media(max-width:720px){
+  .github-invite{min-height:350px;margin-top:50px;padding:48px 24px!important}
+  .github-invite-link{padding:17px 25px;font-size:19px}
+}
+@media(prefers-reduced-motion:reduce){.github-invite-link{transition:none}}
+
 /* About and contact. */
 .platform-vision{color:var(--pk-ink)!important}
 .platform-about>div{gap:18px!important}
