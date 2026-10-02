@@ -392,7 +392,7 @@ header,.platform-header{
   text-align:center;
 }
 .platform-main .github-invite h2{margin:0;padding:0;border:0;color:var(--pk-ink);font-size:clamp(36px,4.5vw,72px)!important;line-height:1.15}
-.github-invite p{margin:24px 0 40px;color:var(--pk-muted);font-size:clamp(18px,1.7vw,25px);line-height:1.6}
+.github-invite-link{margin-top:40px}
 .github-invite-link{display:inline-flex;align-items:center;justify-content:center;gap:14px;max-width:100%;padding:19px 38px;border-radius:999px;background:#fff;color:#111214;font-size:22px;font-weight:650;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
 .github-invite-link svg{width:28px;height:28px;flex-shrink:0}
 .github-invite-link:hover{transform:translateY(-3px);box-shadow:0 7px 0 #aeb0b5}

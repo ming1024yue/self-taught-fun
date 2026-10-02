@@ -19,7 +19,6 @@ export default function PlatformHome(){
    </section>
    <section className="github-invite" aria-labelledby="github-invite-title">
     <h2 id="github-invite-title">{pick(language,"一起建设自学坊","Build Self-Taught Fun together")}</h2>
-    <p>{pick(language,"查看代码，提出建议，参与贡献。","Explore the code, share ideas, and contribute.")}</p>
     <a className="github-invite-link" href="https://github.com/ming1024yue/self-taught-fun" target="_blank" rel="noopener noreferrer">
      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .75a11.25 11.25 0 0 0-3.558 21.923c.563.104.768-.244.768-.542 0-.267-.01-.975-.015-1.913-3.13.68-3.791-1.508-3.791-1.508-.512-1.3-1.25-1.646-1.25-1.646-1.023-.7.078-.686.078-.686 1.13.08 1.725 1.16 1.725 1.16 1.005 1.722 2.637 1.225 3.279.936.102-.727.393-1.225.715-1.507-2.499-.285-5.126-1.25-5.126-5.563 0-1.229.44-2.234 1.16-3.021-.117-.285-.503-1.429.11-2.978 0 0 .945-.303 3.094 1.154A10.78 10.78 0 0 1 12 6.18c.957.004 1.921.13 2.821.379 2.148-1.457 3.092-1.154 3.092-1.154.615 1.55.229 2.693.113 2.978.722.787 1.158 1.792 1.158 3.021 0 4.324-2.631 5.275-5.138 5.553.404.35.765 1.04.765 2.097 0 1.515-.014 2.738-.014 3.11 0 .301.203.652.774.541A11.251 11.251 0 0 0 12 .75Z"/></svg>
      <span>View on GitHub</span>
