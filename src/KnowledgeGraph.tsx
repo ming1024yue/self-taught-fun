@@ -64,10 +64,17 @@ export default function KnowledgeGraph(){
   if(canvas.width!==Math.round(rect.width*dpr)||canvas.height!==Math.round(rect.height*dpr)){canvas.width=Math.round(rect.width*dpr);canvas.height=Math.round(rect.height*dpr)}
   const c=canvas.getContext("2d")!;c.setTransform(dpr,0,0,dpr,0,0);c.clearRect(0,0,rect.width,rect.height);
   const styles=getComputedStyle(document.documentElement),css=(name:string,fallback:string)=>styles.getPropertyValue(name).trim()||fallback;
-  const line=css("--graph-line","#d8dcda"),activeLine=css("--graph-line-active","#8e9691"),mutedLine=css("--graph-line-muted","rgba(174,180,176,.2)"),label=css("--graph-label","#343a40"),selectedStroke=css("--graph-selected-stroke","#fff");
-  const v=viewRef.current,selectedId=activeId.current,visualScale=graphVisualScale(rect.width),fontSize=Math.round(12*visualScale),pos=(n:Node)=>({x:n.x*rect.width*v.scale+v.x,y:n.y*rect.height*v.scale+v.y});
+  const line=css("--graph-line","#d8dcda"),activeLine=css("--graph-line-active","#8e9691"),mutedLine=css("--graph-line-muted","rgba(174,180,176,.2)"),label=css("--graph-label","#343a40"),labelHalo=css("--graph-label-halo","#fff"),selectedStroke=css("--graph-selected-stroke","#fff");
+  const v=viewRef.current,selectedId=activeId.current,visualScale=graphVisualScale(rect.width),labelScale=Math.min(visualScale,1.35),pos=(n:Node)=>({x:n.x*rect.width*v.scale+v.x,y:n.y*rect.height*v.scale+v.y});
   for(const [a,b] of edges){const related=!selectedId||a===selectedId||b===selectedId,p=pos(nodesRef.current.find(n=>n.id===a)!),q=pos(nodesRef.current.find(n=>n.id===b)!);c.strokeStyle=selectedId?(related?activeLine:mutedLine):line;c.lineWidth=(selectedId&&related?1.6:1)*Math.min(visualScale,1.3);c.beginPath();c.moveTo(p.x,p.y);c.lineTo(q.x,q.y);c.stroke()}
-  for(const n of nodesRef.current){const p=pos(n),selected=selectedId===n.id,radius=n.size*visualScale+(selected?3*visualScale:0);c.beginPath();c.arc(p.x,p.y,radius,0,Math.PI*2);c.fillStyle=colors[n.group];c.fill();if(selected){c.strokeStyle=selectedStroke;c.lineWidth=2*visualScale;c.stroke()}if(n.size>=7||selected){c.font=`${selected?600:500} ${fontSize}px -apple-system, sans-serif`;c.fillStyle=label;c.fillText(english?topicLabel(n.id,n.label):n.label,p.x+radius+7*visualScale,p.y+fontSize*.34)}}
+  for(const n of nodesRef.current){
+   const p=pos(n),selected=selectedId===n.id,radius=n.size*visualScale+(selected?3*visualScale:0),fontSize=Math.round(Math.max(8,Math.min(14,4+n.size*.9))*labelScale),text=english?topicLabel(n.id,n.label):n.label,gap=5*visualScale;
+   c.beginPath();c.arc(p.x,p.y,radius,0,Math.PI*2);c.fillStyle=colors[n.group];c.fill();
+   if(selected){c.strokeStyle=selectedStroke;c.lineWidth=2*visualScale;c.stroke()}
+   c.save();c.font=`${selected?650:550} ${fontSize}px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;c.textBaseline="middle";c.lineJoin="round";
+   const textWidth=c.measureText(text).width,rightX=p.x+radius+gap,leftX=p.x-radius-gap-textWidth,x=rightX+textWidth<=rect.width-6?rightX:Math.max(6,leftX),y=Math.max(fontSize/2+4,Math.min(rect.height-fontSize/2-4,p.y));
+   c.strokeStyle=labelHalo;c.lineWidth=Math.max(2,3*labelScale);c.strokeText(text,x,y);c.fillStyle=label;c.fillText(text,x,y);c.restore();
+  }
  };drawRef.current=draw;draw();const observer=new ResizeObserver(draw);observer.observe(canvas);window.addEventListener("site-theme-change",draw);return()=>{observer.disconnect();window.removeEventListener("site-theme-change",draw)}},[english]);
  const local=(e:{currentTarget:HTMLCanvasElement;clientX:number;clientY:number})=>{const r=e.currentTarget.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top,r}};
  const hit=(x:number,y:number,r:DOMRect)=>{const v=viewRef.current;let found:Node|null=null,best=26*graphVisualScale(r.width);for(const n of nodesRef.current){const d=Math.hypot(x-(n.x*r.width*v.scale+v.x),y-(n.y*r.height*v.scale+v.y));if(d<best){best=d;found=n}}return found};
