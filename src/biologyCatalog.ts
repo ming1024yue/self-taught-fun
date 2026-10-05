@@ -1,7 +1,7 @@
 import {r,type SubjectConfig,type Topic} from "./subjectTypes";
 
 const t=(title:string,intro:string,resources:ReturnType<typeof r>[]):Topic=>({title,intro,resources});
-const start=["开始之前",[["intro","本站目的"],["how","如何使用本站"],["plan","学习规划"]]] as const;
+const start=["开始之前",[["plan","学习规划"]]] as const;
 
 const topics:Record<string,Topic>={
  tools:t("学习工具","检索论文、序列、结构与组学数据，并用可复现的方法记录分析。",[]),

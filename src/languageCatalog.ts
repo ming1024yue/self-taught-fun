@@ -2,7 +2,7 @@ import{r,type Phase,type Resource,type SubjectConfig,type Topic}from"./subjectTy
 
 type Course=[string,string,string,Resource[]];
 type Track={slug:string;name:string;en:string;intro:string;caution:string;courses:Course[];tools:SubjectConfig["tools"];books:SubjectConfig["books"];portals:SubjectConfig["portals"]};
-const start=["开始之前",[["intro","本站目的"],["how","如何使用本站"],["plan","学习规划"]]] as const;
+const start=["开始之前",[["plan","学习规划"]]] as const;
 const phaseSettings:Record<string,Record<string,{time:string;mode?:Phase["mode"];title?:string}>>={
  linguistics:{foundations:{time:"2–3 个月"},sound:{time:"2–3 个月"},grammar:{time:"3–4 个月"},"meaning-change":{time:"3–4 个月"},computational:{time:"按方向 4–6 个月",mode:"choice",title:"选择计算语言学或其他专门方向"}},
  chinese:{modern:{time:"2–3 个月"},grammar:{time:"2–3 个月"},classical:{time:"5–8 个月"},"history-dialects":{time:"按方向 4–6 个月",mode:"choice",title:"选择汉语史、音韵或方言方向"}},

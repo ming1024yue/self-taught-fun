@@ -1,6 +1,6 @@
 import {r,type SubjectConfig,type Topic} from "./subjectTypes";
 const t=(title:string,intro:string,resources:ReturnType<typeof r>[]):Topic=>({title,intro,resources});
-const start=["开始之前",[["intro","本站目的"],["how","如何使用本站"],["plan","学习规划"]]] as const;
+const start=["开始之前",[["plan","学习规划"]]] as const;
 const chemistryTopics:Record<string,Topic>={
  tools:t("学习工具","用结构绘图、数据库、计算和实验记录理解物质变化。",[]),
  foundations:t("数学与物理基础","补齐单位、代数、函数、能量和原子尺度的基本语言。",[r("OpenStax Chemistry 2e: Essential Ideas","https://openstax.org/books/chemistry-2e/pages/1-introduction","入门","开放教材","无需前置","从测量、单位、物质分类和化学计量开始。"),r("MIT 5.111SC Review Materials","https://ocw.mit.edu/courses/5-111sc-principles-of-chemical-science-fall-2014/pages/unit-i-the-atom/lecture-1/","进阶","公开课","高中代数","用复习题检查方程、摩尔和有效数字基础。"),r("MIT Mathematics for Chemistry","https://ocw.mit.edu/search/?q=mathematics%20chemistry","高级","公开课","微积分与基础化学","为物理化学补充微积分、微分方程和线性代数。")]),

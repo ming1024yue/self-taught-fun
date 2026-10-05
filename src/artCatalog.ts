@@ -2,7 +2,7 @@ import {r,type Curriculum,type SubjectConfig,type Topic} from "./subjectTypes";
 
 const t=(title:string,intro:string,resources:ReturnType<typeof r>[]):Topic=>({title,intro,resources});
 const tc=(title:string,intro:string,resources:ReturnType<typeof r>[],curriculum:Curriculum):Topic=>({title,intro,resources,curriculum});
-const start=["开始之前",[["intro","本站目的"],["how","如何使用本站"],["plan","学习规划"]]] as const;
+const start=["开始之前",[["plan","学习规划"]]] as const;
 
 const fineArtsTopics:Record<string,Topic>={
  tools:t("学习工具","工具只服务于观察、实验、记录和呈现。先建立手上功夫与视觉判断，再按媒介逐步增加软件和设备。",[]),

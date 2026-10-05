@@ -1,7 +1,7 @@
 import{r,type Phase,type Resource,type SubjectConfig,type Topic}from"./subjectTypes";
 type Course=[string,string,string,Resource[],string?];
 type Track={slug:string;name:string;en:string;intro:string;caution:string;courses:Course[];tools:SubjectConfig["tools"];books:SubjectConfig["books"];portals:SubjectConfig["portals"]};
-const start=["开始之前",[["intro","本站目的"],["how","如何使用本站"],["plan","学习规划"]]] as const;
+const start=["开始之前",[["plan","学习规划"]]] as const;
 const coreTimes:Record<string,string[]>={
  electrical:["4–6 个月","3–5 个月","3–5 个月","3–5 个月"],
  mechanical:["4–6 个月","4–6 个月","4–6 个月","3–5 个月"],

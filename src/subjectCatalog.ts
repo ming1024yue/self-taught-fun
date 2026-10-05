@@ -1,6 +1,6 @@
 import {r,type SubjectConfig,type Topic} from "./subjectTypes";
 const t=(title:string,intro:string,resources:ReturnType<typeof r>[]):Topic=>({title,intro,resources});
-const starts=[["开始之前",[["intro","本站目的"],["how","如何使用本站"],["plan","学习规划"]]]] as const;
+const starts=[["开始之前",[["plan","学习规划"]]]] as const;
 const commonTools=[["记录与写作",[["Obsidian","https://obsidian.md/","建立概念、问题与资料之间的连接"],["Zotero","https://www.zotero.org/","管理教材、论文和引用"],["Overleaf","https://www.overleaf.com/","撰写带公式、图表和引用的报告"]]],["数据与计算",[["Python","https://www.python.org/","数据处理、模拟与可复现分析"],["Jupyter","https://jupyter.org/","整合代码、图表与文字说明"],["GitHub","https://github.com/","保存和分享项目版本"]]]] as const;
 const physicsTopics:Record<string,Topic>={
  tools:t("学习工具","用仿真、计算和实验记录连接方程与真实现象。",[]),

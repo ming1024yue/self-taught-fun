@@ -15,7 +15,7 @@ import {computerScience,physics} from "./subjectCatalog";
 import type {SubjectConfig} from "./subjectTypes";
 
 const base=import.meta.env.BASE_URL;
-const utilityTopics=new Set(["intro","how","plan","tools","books"]);
+const utilityTopics=new Set(["intro","plan","tools","books"]);
 
 export type CourseSearchItem={
  id:string;

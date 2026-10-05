@@ -1,6 +1,6 @@
 import {r,type SubjectConfig,type Topic} from "./subjectTypes";
 const t=(title:string,intro:string,resources:ReturnType<typeof r>[]):Topic=>({title,intro,resources});
-const start=["开始之前",[["intro","本站目的"],["how","如何使用本站"],["plan","学习规划"]]] as const;
+const start=["开始之前",[["plan","学习规划"]]] as const;
 const topics:Record<string,Topic>={
  tools:t("学习工具","获取合法文本、建立阅读批注、管理版本、引用和写作。",[]),
  reading:t("细读与文学写作","从语言、形式、叙述、意象和语境提出可由文本支持的解释。",[r("The Word on College Reading and Writing","https://open.umn.edu/opentextbooks/textbooks/471","入门","开放教材","无需前置","学习批判性阅读、文本分析、论点、证据与修改。"),r("MIT Reading Fiction","https://ocw.mit.edu/search/?q=reading%20fiction","进阶","公开课","基础阅读与写作","通过小说练习叙述视角、结构和形式分析。"),r("Yale Modern Poetry","https://oyc.yale.edu/english/engl-310","高级","公开课","诗歌细读与文学史基础","用完整大学课程深化韵律、声音和现代主义语境。")]),

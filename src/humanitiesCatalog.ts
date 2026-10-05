@@ -1,6 +1,6 @@
 import {r,type SubjectConfig,type Topic} from "./subjectTypes";
 const t=(title:string,intro:string,resources:ReturnType<typeof r>[]):Topic=>({title,intro,resources});
-const start=["开始之前",[["intro","本站目的"],["how","如何使用本站"],["plan","学习规划"]]] as const;
+const start=["开始之前",[["plan","学习规划"]]] as const;
 const socialTopics:Record<string,Topic>={
  tools:t("学习工具","检索数据、文献和政策材料，保存透明的分析过程。",[]),
  methods:t("研究方法与统计","学习调查、实验、访谈、比较研究、因果推断和研究伦理。",[r("Social Science Research: Principles, Methods, and Practices","https://digitalcommons.usf.edu/oa_textbooks/3/","入门","开放教材","无需前置","免费介绍理论、测量、抽样和定量定性方法。"),r("OpenIntro Statistics","https://www.openintro.org/book/os/","进阶","开放教材","高中代数","用开放教材建立统计推断基础。"),r("Causal Inference: The Mixtape","https://mixtape.scunning.com/","高级","开放教材","回归、概率与编程","免费学习实验、匹配、断点和双重差分。")]),

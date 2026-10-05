@@ -1,0 +1,248 @@
+.tree-plan>.plan-intro,
+.tree-plan>.beginner-note,
+.tree-plan>.learning-timeline,
+.tree-plan>.plan-steps,
+.tree-plan>.weekly{display:none!important}
+
+.cs-plan-tree{
+  margin-top:28px;
+  overflow:hidden;
+  border:2px solid var(--pk-ink);
+  border-radius:6px 12px 7px 13px;
+  background:var(--pk-card);
+  box-shadow:7px 8px 0 var(--pk-shadow);
+}
+.cs-plan-tree-canvas{
+  overflow-x:auto;
+  padding:30px 20px 28px;
+  scrollbar-color:color-mix(in srgb,var(--pk-ink) 28%,transparent) transparent;
+  scrollbar-width:thin;
+}
+.cs-plan-tree-root,
+.cs-plan-tree-root ul{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  min-width:max-content;
+  margin:0;
+  padding:34px 0 0;
+  list-style:none;
+}
+.cs-plan-tree-root{padding-top:0}
+.cs-plan-tree-root li{
+  position:relative;
+  display:flex;
+  padding:34px 6px 0;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+}
+.cs-plan-tree-root>li{padding-top:0}
+.cs-plan-tree-root li::before,
+.cs-plan-tree-root li::after{
+  position:absolute;
+  top:0;
+  width:50%;
+  height:34px;
+  border-top:2px solid color-mix(in srgb,var(--pk-ink) 56%,transparent);
+  content:"";
+}
+.cs-plan-tree-root li::before{right:50%}
+.cs-plan-tree-root li::after{
+  left:50%;
+  border-left:2px solid color-mix(in srgb,var(--pk-ink) 56%,transparent);
+}
+.cs-plan-tree-root li:only-child::before,
+.cs-plan-tree-root li:only-child::after{display:none}
+.cs-plan-tree-root li:only-child{padding-top:0}
+.cs-plan-tree-root li:first-child::before,
+.cs-plan-tree-root li:last-child::after{border:0}
+.cs-plan-tree-root li:last-child::before{
+  border-right:2px solid color-mix(in srgb,var(--pk-ink) 56%,transparent);
+  border-radius:0 8px 0 0;
+}
+.cs-plan-tree-root li:first-child::after{border-radius:8px 0 0}
+.cs-plan-tree-root ul::before{
+  position:absolute;
+  top:0;
+  left:50%;
+  height:34px;
+  border-left:2px solid color-mix(in srgb,var(--pk-ink) 56%,transparent);
+  content:"";
+}
+.cs-plan-node{
+  position:relative;
+  z-index:1;
+  display:grid;
+  width:132px;
+  min-height:56px;
+  padding:9px 12px;
+  place-items:center;
+  border:2px solid var(--pk-ink);
+  border-radius:5px 10px 6px 11px;
+  background:var(--pk-paper);
+  color:var(--pk-ink);
+  font:700 14px/1.35 var(--pk-ui);
+  box-shadow:3px 4px 0 var(--pk-edge-shadow);
+  cursor:pointer;
+  transition:transform .16s ease,box-shadow .16s ease,background-color .16s ease;
+}
+.cs-plan-node[data-tone="core"]{background:color-mix(in srgb,var(--pk-yellow) 54%,var(--pk-paper))}
+.cs-plan-node[data-tone="systems"]{background:color-mix(in srgb,var(--pk-green) 48%,var(--pk-paper))}
+.cs-plan-node[data-tone="software"]{background:color-mix(in srgb,var(--pk-yellow) 34%,var(--pk-paper))}
+.cs-plan-node[data-tone="ai"]{background:color-mix(in srgb,var(--pk-blue) 50%,var(--pk-paper))}
+.cs-plan-node[data-tone="creative"]{background:color-mix(in srgb,var(--pk-coral) 34%,var(--pk-paper))}
+.cs-plan-node[data-tone="security"]{background:color-mix(in srgb,var(--pk-coral) 52%,var(--pk-paper))}
+.cs-plan-node:hover,
+.cs-plan-node:focus-visible,
+.cs-plan-node[aria-pressed="true"]{
+  box-shadow:6px 7px 0 var(--pk-edge-shadow);
+}
+.cs-plan-node:focus-visible{
+  outline:3px solid color-mix(in srgb,var(--pk-ink) 28%,transparent);
+  outline-offset:3px;
+}
+.cs-plan-node[aria-pressed="true"]::after{
+  position:absolute;
+  right:8px;
+  bottom:6px;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--pk-ink);
+  content:"";
+}
+
+.cs-plan-node-wrap{
+  position:relative;
+  z-index:2;
+  display:inline-flex;
+}
+.cs-plan-node-wrap.is-active{z-index:40}
+.cs-plan-popover{
+  position:absolute;
+  top:50%;
+  left:calc(100% + 12px);
+  z-index:50;
+  width:280px;
+  padding:14px 16px;
+  border:2px solid var(--pk-ink);
+  border-radius:5px 10px 6px 11px;
+  background:var(--pk-paper);
+  box-shadow:6px 7px 0 var(--pk-edge-shadow);
+  color:var(--pk-ink);
+  text-align:left;
+  transform:translateY(-50%);
+}
+.cs-plan-popover strong{font-size:16px}
+.cs-plan-popover p{margin:4px 0 10px;color:var(--pk-muted);font-size:13px;line-height:1.55}
+.cs-plan-popover a{
+  display:inline-block;
+  padding:6px 9px;
+  border:1px solid var(--pk-ink);
+  border-radius:4px 8px 5px 9px;
+  background:color-mix(in srgb,var(--pk-yellow) 46%,var(--pk-paper));
+  font-size:12px;
+  font-weight:700;
+}
+.cs-plan-popover a:hover{background:var(--pk-yellow)}
+
+@media(min-width:801px){
+  .cs-plan-tree-root .cs-plan-branches{
+    display:flex;
+    width:max-content;
+    min-width:100%;
+  }
+  .cs-plan-tree-root li[data-branch="true"]{min-width:0;padding-inline:4px}
+  .cs-plan-tree-root li[data-branch="true"] ul{
+    display:block;
+    min-width:0;
+    padding:10px 0 0 8px;
+    border-left:2px solid color-mix(in srgb,var(--pk-ink) 48%,transparent);
+  }
+  .cs-plan-tree-root li[data-branch="true"] ul::before{display:none}
+  .cs-plan-tree-root li[data-branch="true"] ul li{
+    display:block;
+    padding:10px 0 0 8px;
+    text-align:left;
+  }
+  .cs-plan-tree-root li[data-branch="true"] ul li::before{
+    display:block;
+    top:38px;
+    right:auto;
+    left:0;
+    width:8px;
+    height:0;
+    border:0;
+    border-top:2px solid color-mix(in srgb,var(--pk-ink) 48%,transparent);
+    border-radius:0;
+  }
+  .cs-plan-tree-root li[data-branch="true"] ul li::after{display:none}
+  .cs-plan-tree-root li[data-branch="true"] .cs-plan-node{width:110px;font-size:12px}
+  .cs-plan-tree-root .cs-plan-branches>li:nth-child(n+4) .cs-plan-popover{
+    right:calc(100% + 12px);
+    left:auto;
+  }
+}
+
+@media(min-width:1100px){
+  .cs-plan-tree,
+  .cs-plan-tree-canvas{overflow:visible}
+  .cs-plan-tree-canvas{padding-bottom:82px}
+}
+
+@media(min-width:801px) and (max-width:1099px){
+  .cs-plan-popover{
+    top:calc(100% + 10px);
+    left:50%;
+    transform:translateX(-50%);
+  }
+}
+
+@media(max-width:800px){
+  .cs-plan-tree{margin-top:22px}
+  .cs-plan-tree-canvas{overflow:visible;padding:20px 16px 22px}
+  .cs-plan-tree-root,
+  .cs-plan-tree-root ul{
+    display:block;
+    min-width:0;
+    padding:0 0 0 20px;
+    border-left:2px solid color-mix(in srgb,var(--pk-ink) 48%,transparent);
+  }
+  .cs-plan-tree-root{padding-left:0;border-left:0}
+  .cs-plan-tree-root li,
+  .cs-plan-tree-root>li{
+    display:block;
+    padding:10px 0 0 18px;
+    text-align:left;
+  }
+  .cs-plan-tree-root>li{padding-left:0}
+  .cs-plan-tree-root li::before{
+    display:block;
+    top:38px;
+    right:auto;
+    left:0;
+    width:18px;
+    height:0;
+    border:0;
+    border-top:2px solid color-mix(in srgb,var(--pk-ink) 48%,transparent);
+    border-radius:0;
+  }
+  .cs-plan-tree-root>li::before,
+  .cs-plan-tree-root li::after,
+  .cs-plan-tree-root ul::before{display:none}
+  .cs-plan-node-wrap{width:100%;align-items:flex-start;flex-direction:column}
+  .cs-plan-node{width:min(100%,250px);min-height:50px;text-align:left}
+  .cs-plan-popover{
+    position:relative;
+    top:auto;
+    right:auto;
+    left:auto;
+    width:min(100%,320px);
+    margin:10px 0 2px;
+    transform:none;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .cs-plan-node{transition:none}
+}

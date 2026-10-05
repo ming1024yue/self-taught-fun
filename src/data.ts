@@ -1,5 +1,5 @@
 export const groups=[
- ["开始之前",[["intro","本站目的"],["how","如何使用本站"],["plan","学习规划"]]],
+ ["开始之前",[["plan","学习规划"]]],
  ["基础工具",[["tools","学习工具"],["accounting","会计基础"],["math","数学与统计"]]],
  ["经济学基础",[["micro","微观经济学"],["macro","宏观经济学"],["econometrics","计量经济学"]]],
  ["金融学核心",[["corporate","公司金融"],["investments","投资学"],["pricing","资产定价"],["fixed-income","固定收益"]]],

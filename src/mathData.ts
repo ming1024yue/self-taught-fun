@@ -3,7 +3,7 @@ export type MathTopic={title:string;intro:string;resources:MathResource[]};
 const R=(name:string,url:string,level:string,kind:string,pre:string,description:string):MathResource=>({name,url,level,kind,pre,description});
 
 export const mathGroups=[
- ["开始之前",[["intro","本站目的"],["how","如何使用本站"],["plan","学习规划"]]],
+ ["开始之前",[["plan","学习规划"]]],
  ["起点",[["tools","学习工具"],["foundations","数学基础"],["proofs","证明与数学语言"]]],
  ["大学核心",[["calculus","微积分"],["linear-algebra","线性代数"],["probability","概率论"],["statistics","统计学"],["differential-equations","微分方程"]]],
  ["结构与理论",[["discrete","离散数学"],["real-analysis","实分析"],["complex-analysis","复分析"],["abstract-algebra","抽象代数"],["number-theory","数论"],["topology-geometry","拓扑与几何"],["cryptography","密码学"]]],

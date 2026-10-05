@@ -37,6 +37,7 @@ import"./paper-preview.css";
 import"./paper-home-preview.css";
 import"./theme.css";
 import"./paper-site.css";
+import"./computer-science-plan-tree.css";
 
 const base=import.meta.env.BASE_URL.replace(/\/$/,"");
 let path=location.pathname.replace(base,"");

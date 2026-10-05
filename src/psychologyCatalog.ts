@@ -1,7 +1,7 @@
 import {r,type SubjectConfig,type Topic} from "./subjectTypes";
 
 const t=(title:string,intro:string,resources:ReturnType<typeof r>[]):Topic=>({title,intro,resources});
-const start=["开始之前",[["intro","本站目的"],["how","如何使用本站"],["plan","学习规划"]]] as const;
+const start=["开始之前",[["plan","学习规划"]]] as const;
 const mitIntro="https://ocw.mit.edu/courses/9-00sc-introduction-to-psychology-fall-2011/";
 
 const topics:Record<string,Topic>={
