@@ -40,6 +40,7 @@ export const mathTopics:Record<string,MathTopic>={
  ]},
  statistics:{title:"统计学",intro:"从数据出发进行描述、估计、检验与建模，并理解结论的边界。",resources:[
   R("OpenIntro Statistics","https://www.openintro.org/book/os/","入门","开放教材","基础代数","免费教材，以真实数据、可视化和练习介绍统计推断。"),
+  R("Think Stats, 3rd edition — Allen B. Downey","https://allendowney.github.io/ThinkStats/index.html","入门","开放教材","Python 基础","通过 Python 与真实数据学习探索性数据分析、概率分布、参数估计、假设检验和回归，配有可在 Colab 运行的 Jupyter 笔记本与练习。"),
   R("MIT 18.05 Introduction to Probability and Statistics","https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/","进阶","公开课","概率论与多变量微积分","把概率基础连接到贝叶斯与频率学派推断、Bootstrap 和线性回归。"),
   R("MIT 18.650 Statistics for Applications","https://ocw.mit.edu/courses/18-650-statistics-for-applications-fall-2016/","高级","公开课","概率论、微积分与线性代数","进入参数估计、假设检验、回归、广义线性模型和主成分分析。")
  ]},
