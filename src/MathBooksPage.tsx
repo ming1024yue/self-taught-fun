@@ -4,6 +4,7 @@ const books=[
  ["OpenStax Algebra and Trigonometry 2e","https://openstax.org/details/books/algebra-and-trigonometry-2e","基础数学 · 入门","覆盖函数、方程、指数对数与三角学，适合补齐大学前基础。"],
  ["Calculus — Gilbert Strang","https://ocw.mit.edu/courses/res-18-001-calculus-fall-2023/","微积分 · 入门至进阶","MIT OCW 发布的完整开放教材，兼顾单变量、多变量和实际应用。"],
  ["Linear Algebra — Jim Hefferon","https://hefferon.net/linearalgebra/","线性代数 · 入门","从消元逐步进入向量空间和线性映射，提供完整习题。"],
+ ["Linear Algebra Done Right — Sheldon Axler","https://linear.axler.net/","线性代数 · 进阶","第四版开放教材，提供免费中英文版本，围绕向量空间、线性映射、特征值与谱定理展开，配有习题与讲解视频。"],
  ["Book of Proof — Richard Hammack","https://richardhammack.github.io/BookOfProof/","证明 · 入门","从集合与逻辑开始训练直接证明、反证法和数学归纳法。"],
  ["OpenIntro Statistics","https://www.openintro.org/book/os/","统计学 · 入门","使用真实数据和练习介绍描述统计、抽样与统计推断。"],
  ["Basic Analysis — Jiří Lebl","https://www.jirka.org/ra/","实分析 · 进阶","两卷开放教材，从实数、序列与连续进入度量空间和多变量分析。"],
